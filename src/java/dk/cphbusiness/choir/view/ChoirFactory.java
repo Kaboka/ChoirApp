@@ -1,0 +1,38 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package dk.cphbusiness.choir.view;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ *
+ * @author Kasper
+ */
+public class ChoirFactory {
+
+    private static ChoirFactory instance = null;
+    private Map<String, Command> commands;
+
+    private ChoirFactory() {
+        commands = new HashMap<String, Command>();
+    }
+         
+    
+    public static ChoirFactory getInstance(){
+        if(instance == null){
+            instance = new ChoirFactory();
+        }
+        return instance;
+    }
+    
+    public Command findCommand(String key){
+        if(key == null){
+            key = "main";
+        }
+        return commands.get(key);
+    }
+}
+
