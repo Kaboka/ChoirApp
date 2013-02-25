@@ -4,6 +4,8 @@
  */
 package dk.cphbusiness.choir.view;
 
+import dk.cphbusiness.choir.contract.ChoirManager;
+import dk.cphbusiness.choir.control.DummyChoirManager;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,9 +17,15 @@ public class ChoirFactory {
 
     private static ChoirFactory instance = null;
     private Map<String, Command> commands;
+    private ChoirManager manager;
 
     private ChoirFactory() {
         commands = new HashMap<String, Command>();
+        
+        manager = new DummyChoirManager();
+        
+        commands.put("main", new TargetCommand("main.jsp"));
+        commands.put("listMembers", new ListMembersCommand("memberList.jsp"));
     }
          
     
@@ -34,5 +42,11 @@ public class ChoirFactory {
         }
         return commands.get(key);
     }
+
+    public ChoirManager getManager() {
+        return manager;
+    }
+    
+    
 }
 

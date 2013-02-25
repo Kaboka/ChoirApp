@@ -4,12 +4,10 @@
  */
 package dk.cphbusiness.choir.view;
 
-import javax.servlet.http.HttpServletRequest;
-
 /**
  *
  * @author Kasper
  */
-public interface Command {
-    String execute(HttpServletRequest request)throws CommandException;
+class CommandException extends Exception {
+    
 }

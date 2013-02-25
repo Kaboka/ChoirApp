@@ -5,7 +5,6 @@
 package dk.cphbusiness.choir.view;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -28,7 +27,7 @@ public class FrontController extends HttpServlet {
         String target = null;
         try {
             target = command.execute(request);
-        } catch (commandException ex) {
+        } catch (CommandException ex) {
             Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex);
         }
         request.getRequestDispatcher(target).forward(request, response);
