@@ -26,8 +26,8 @@ public class ViewMemberCommand extends TargetCommand{
         ChoirManager manager = ChoirFactory.getInstance().getManager();
         long id = Long.parseLong(request.getParameter("id"));
         try {
-            MemberDetail members = manager.findMember(id);
-            request.setAttribute("members",members);
+            MemberDetail member = manager.findMember(id);
+            request.setAttribute("member",member);
         } catch (NoSuchMemberException ex) {
             Logger.getLogger(ViewMemberCommand.class.getName()).log(Level.SEVERE, null, ex);
         }

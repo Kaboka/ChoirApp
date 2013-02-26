@@ -39,7 +39,7 @@ public class SaveMemberCommand extends TargetCommand{
             String password = request.getParameter("password");
             int voiceCode = Integer.parseInt(request.getParameter("voiceCode"));
 //            String[] roleCodes = request.getParameter("roleCodes");
-            String[] roleCodes = new String[2];
+            String[] roleCodes = {"REP"};
             
             MemberDetail member = new MemberDetail(id, firstName, lastName, title, false, false, null, voiceCode, roleCodes, street, zipCode, city, email, phone);
         try {

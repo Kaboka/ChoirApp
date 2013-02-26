@@ -25,13 +25,16 @@ public class LoginCommand extends TargetCommand {
     public String execute(HttpServletRequest request) throws CommandException {
         ChoirManager manager = ChoirFactory.getInstance().getManager();
         HttpSession session = request.getSession();
+        String target = super.execute(request); 
         try {
            session.setAttribute("loggedIn", manager.login(request.getParameter("userName"), request.getParameter("password")));
         } catch (AuthenticationException ex) {
-            Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ex);
+            session.removeAttribute("loggedIn");
+            target = "login.jsp";
+            Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ex);       
         }
         
-        return super.execute(request); 
+        return target; 
     }
     
     

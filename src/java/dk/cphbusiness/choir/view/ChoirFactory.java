@@ -8,6 +8,7 @@ import dk.cphbusiness.choir.contract.ChoirManager;
 import dk.cphbusiness.choir.control.DummyChoirManager;
 import java.util.HashMap;
 import java.util.Map;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -21,16 +22,16 @@ public class ChoirFactory {
 
     private ChoirFactory() {
         commands = new HashMap<String, Command>();
-
         manager = new DummyChoirManager();
         
+        
         commands.put("login", new LoginCommand("main.jsp"));
-        commands.put("not-loggedin", new TargetCommand("login.jsp"));
-        commands.put("main", new TargetCommand("main.jsp"));
+        commands.put("main", new MainCommand("main.jsp"));
         commands.put("listMembers", new ListMembersCommand("memberList.jsp"));
         commands.put("viewMembers", new ViewMemberCommand("memberView.jsp"));
         commands.put("editMembers", new EditMemberCommand("memberEdit.jsp"));
-
+        commands.put("saveMember", new SaveMemberCommand("memberView.jsp"));
+        commands.put("cancleMember", new TargetCommand("memberList.jsp"));
     }
 
     public static ChoirFactory getInstance() {

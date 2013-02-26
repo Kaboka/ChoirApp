@@ -25,7 +25,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <button type="submit" name="command" value="login"/>
+                        <button type="submit" name="command" value="login">Log in</button>
                     </td>
                 </tr>
             </table>

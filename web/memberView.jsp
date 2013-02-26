@@ -15,35 +15,35 @@
     <body>
         <hr/>
         <form action="FrontController" method="POST">
-          <input type="hidden" name="id" value="${members.id}">
+          <input type="hidden" name="id" value="${member.id}">
             <table border="1">
                 <tr>
                     <th>ID</th>
-                    <td>${members.id}</td>
+                    <td>${member.id}</td>
                 </tr>
                 <tr>
                     <th>Name: </th>
                     <td>
-                        ${members.firstName} ${members.lastName}
+                        ${member.firstName} ${member.lastName}
                     </td>
                 </tr>
                 <tr>
                     <th>Date of Birth: </th>
                     <td>
-                        ${members.dateOfBirth}
+                        ${member.dateOfBirth}
                     </td>
                 </tr>
                 <tr>
                     <th>Voice: </th>
                     <td>
-                        ${members.voice.name}
+                        ${member.voice.name}
                     </td>
                 </tr>
                 <tr>
                     <th>Roles: </th>
                     <td>
                         <ul>
-                             <c:forEach var="role" items="${members.roles}">
+                             <c:forEach var="role" items="${member.roles}">
                                 <li>${role.code} ${role.name}</li>
                              </c:forEach>
                         </ul>
@@ -52,31 +52,31 @@
                 <tr>
                     <th>Street: </th>
                     <td>
-                        ${members.street}
+                        ${member.street}
                     </td>
                 </tr>
                 <tr>
                     <th>zipCode: </th>
                     <td>
-                        ${members.zipCode}
+                        ${member.zipCode}
                     </td>
                 </tr>
                 <tr>
                     <th>City: </th>
                     <td>
-                        ${members.city}
+                        ${member.city}
                     </td>
                 </tr>
                 <tr>
                     <th>Email: </th>
                     <td>
-                        ${members.email}
+                        ${member.email}
                     </td>
                 </tr>
                 <tr>
                     <th>Phone: </th>
                     <td>
-                        ${members.phone}
+                        ${member.phone}
                     </td>
                 </tr>
                 <tr>
