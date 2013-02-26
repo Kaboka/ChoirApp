@@ -9,6 +9,7 @@ import dk.cphbusiness.choir.contract.eto.AuthenticationException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -23,8 +24,9 @@ public class LoginCommand extends TargetCommand {
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
         ChoirManager manager = ChoirFactory.getInstance().getManager();
+        HttpSession session = request.getSession();
         try {
-            manager.login(request.getParameter("userName"), request.getParameter("password"));
+           session.setAttribute("loggedIn", manager.login(request.getParameter("userName"), request.getParameter("password")));
         } catch (AuthenticationException ex) {
             Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ex);
         }

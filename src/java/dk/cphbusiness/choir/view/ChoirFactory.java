@@ -23,7 +23,9 @@ public class ChoirFactory {
         commands = new HashMap<String, Command>();
 
         manager = new DummyChoirManager();
-
+        
+        commands.put("login", new LoginCommand("main.jsp"));
+        commands.put("not-loggedin", new TargetCommand("login.jsp"));
         commands.put("main", new TargetCommand("main.jsp"));
         commands.put("listMembers", new ListMembersCommand("memberList.jsp"));
         commands.put("viewMembers", new ViewMemberCommand("memberView.jsp"));

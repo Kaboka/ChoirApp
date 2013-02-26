@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,6 +14,8 @@
     </head>
     <body>
         <h1>Choir Main page</h1>
+        <c:if var="loggedin" test="${loggedIn}">
+        <p>Logged in member ${loggedIn.firstName}</p>
         <a href="FrontController?command=listMembers">Show Memberlist</a>
     </body>
 </html>

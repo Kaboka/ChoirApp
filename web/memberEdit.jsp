@@ -36,9 +36,22 @@
 	  <th>Voice:</th>
 	  <td colspan="2">
 	    <select name="voiceCode">
-	    <!--<c:forEach var="voice" items="${voices}">
+<!--	    <c:forEach var="voice" items="${voices}">
 	      <option value="${voice.code}">${voice.name}</option>
             </c:forEach>-->
+            <input type="checkbox" name="roleCodes" value="ADM"/>Administrator<br/>
+	    <input type="checkbox" name="roleCodes" value="BRD"/>Board member<br/>
+	    <input type="checkbox" name="roleCodes" value="RPT"/>Repertoire group member<br/>
+	    <input type="checkbox" name="roleCodes" value="MOD"/>Clothing group member<br/>
+	      </select>
+	    </td>
+	  </tr>
+	<tr>
+	  <th>Roles:</th>
+	  <td colspan="2">
+<!--	  <c:forEach var="role" items="${roles}">
+	    <input type="checkbox" name="roleCodes" value="${role.code}"/>${role.name}<br/>  
+	    </c:forEach>-->
               <option value="0">Other</option>
 	      <option value="1">1st soprano</option>
 	      <option value="2">2nd soprano</option>
@@ -50,19 +63,6 @@
 	      <option value="128">2nd bass</option>
 	      <option value="256">Conductor</option>
 	      <option value="512">Pianist</option>
-	      </select>
-	    </td>
-	  </tr>
-	<tr>
-	  <th>Roles:</th>
-	  <td colspan="2">
-	  <!--<c:forEach var="role" items="${roles}">
-	    <input type="checkbox" name="roleCodes" value="${role.code}"/>${role.superCode}<br/>  
-	    </c:forEach>-->
-            <input type="checkbox" name="roleCodes" value="ADM"/>Administrator<br/>
-	    <input type="checkbox" name="roleCodes" value="BRD"/>Board member<br/>
-	    <input type="checkbox" name="roleCodes" value="RPT"/>Repertoire group member<br/>
-	    <input type="checkbox" name="roleCodes" value="MOD"/>Clothing group member<br/>
 	    </td>
 	  </tr>
 	<tr> 
