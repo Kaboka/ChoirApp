@@ -16,7 +16,8 @@
         <h1>Member list</h1>
         <table>
             <c:forEach var="member" items="${members}">
-                <tr><td><c:out value="${member.name}"></c:out><tr><td>
+                <tr><td><a href="FrontController?command=viewMembers&id=${member.id}">
+                <c:out value="${member.name}"></c:out></a><tr><td>
             </c:forEach>
         </table>
         <form>

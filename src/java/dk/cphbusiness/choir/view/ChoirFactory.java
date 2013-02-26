@@ -21,23 +21,25 @@ public class ChoirFactory {
 
     private ChoirFactory() {
         commands = new HashMap<String, Command>();
-        
+
         manager = new DummyChoirManager();
-        
+
         commands.put("main", new TargetCommand("main.jsp"));
         commands.put("listMembers", new ListMembersCommand("memberList.jsp"));
+        commands.put("viewMembers", new ViewMemberCommand("memberView.jsp"));
+        commands.put("editMembers", new EditMemberCommand("memberEdit.jsp"));
+
     }
-         
-    
-    public static ChoirFactory getInstance(){
-        if(instance == null){
+
+    public static ChoirFactory getInstance() {
+        if (instance == null) {
             instance = new ChoirFactory();
         }
         return instance;
     }
-    
-    public Command findCommand(String key){
-        if(key == null){
+
+    public Command findCommand(String key) {
+        if (key == null) {
             key = "main";
         }
         return commands.get(key);
@@ -46,7 +48,4 @@ public class ChoirFactory {
     public ChoirManager getManager() {
         return manager;
     }
-    
-    
 }
-
