@@ -14,11 +14,11 @@
     </head>
     <body>
         <h1>Member list</h1>
-        <ul>
+        <table>
             <c:forEach var="member" items="${members}">
-                <li><c:out value="${member.name}"></c:out></li>
+                <tr><td><c:out value="${member.name}"></c:out><tr><td>
             </c:forEach>
-        </ul>
+        </table>
         <form>
         <button type="submit" name="command" value="main">Back to Main</button>
         </form>

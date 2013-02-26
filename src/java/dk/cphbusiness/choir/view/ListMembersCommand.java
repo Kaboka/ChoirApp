@@ -5,8 +5,6 @@
 package dk.cphbusiness.choir.view;
 
 import dk.cphbusiness.choir.contract.ChoirManager;
-import dk.cphbusiness.choir.control.DummyChoirManager;
-import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 
 /**
