@@ -36,10 +36,10 @@ public class ChoirFactory {
         commands.put("login", new LoginCommand("main.jsp"));
         commands.put("main", new MainCommand("main.jsp"));
         commands.put("listMembers", new ListMembersCommand("memberList.jsp"));
-        commands.put("viewMembers", new ViewMemberCommand("memberView.jsp"));
-        commands.put("editMembers", new EditMemberCommand("memberEdit.jsp"));
+        commands.put("viewMember", new ViewMemberCommand("memberView.jsp"));
+        commands.put("editMember", new EditMemberCommand("memberEdit.jsp"));
         commands.put("saveMember", new SaveMemberCommand("memberView.jsp"));
-        commands.put("cancleMember", new TargetCommand("memberList.jsp"));
+        commands.put("cancelMember", new TargetCommand("memberList.jsp"));
     }
 
     public static ChoirFactory getInstance() {

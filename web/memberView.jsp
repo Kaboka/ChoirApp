@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Member View</title>
     </head>
     <body>
         <hr/>
@@ -48,7 +48,7 @@
                              </c:forEach>
                         </ul>
                     </td>
-                </tr
+                </tr>
                 <tr>
                     <th>Street: </th>
                     <td>
@@ -87,7 +87,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <button type="submit" name="command" value="editMembers">Edit</button>
+                        <button type="submit" name="command" value="editMember">Edit</button>
                         <button type="submit" name="command" value="listMembers">Return to MemberList</button>
                     </td>
                     

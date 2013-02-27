@@ -14,12 +14,20 @@
     </head>
     <body>
         <h1>Member list</h1>
+        <form>
         <table>
             <c:forEach var="member" items="${members}">
-                <tr><td><a href="FrontController?command=viewMembers&id=${member.id}">
-                <c:out value="${member.name}"></c:out></a><tr><td>
+                <tr><td>
+                <c:out value="${member.name}"></c:out>
+                <input type="hidden" name="id" value="${member.id}"/>
+                    </td>
+                    <td>
+                        <button type="submit" name="command" value="viewMember">View</button>
+                    </td>
+                </tr>
             </c:forEach>
         </table>
+        </form>
         <form>
         <button type="submit" name="command" value="main">Back to Main</button>
         </form>

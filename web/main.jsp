@@ -16,5 +16,6 @@
         <h1>Choir Main page</h1>
         <p>Logged in member ${loggedIn.name}</p>
         <a href="FrontController?command=listMembers">Show Memberlist</a>
+        
     </body>
 </html>
