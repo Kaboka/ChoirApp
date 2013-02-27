@@ -47,7 +47,11 @@ public class SaveMemberCommand extends TargetCommand {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         int voiceCode = Integer.parseInt(request.getParameter("voiceCode"));
-        String[] roleCodes = request.getParameterValues("roleCodes");
+        String[] roleCodes = null;
+        if(request.getParameterValues("roleCodes")==null){
+        }else{
+            roleCodes = request.getParameterValues("roleCodes"); 
+        }
         Date dateOfBirth = null;
         try {
             dateOfBirth = format.parse(request.getParameter("dateOfBirth"));
@@ -64,8 +68,7 @@ public class SaveMemberCommand extends TargetCommand {
             Logger.getLogger(SaveMemberCommand.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ItemNotFoundException ex) {
             Logger.getLogger(SaveMemberCommand.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        } 
         request.getSession().setAttribute("member", member);
 
 

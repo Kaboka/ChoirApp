@@ -24,13 +24,13 @@
                 <tr> <!-- table row = række -->
                     <th>First name:</th> <!-- table header cell -->
                     <td colspan="2">
-                        <input type="text" name="firstName" size="50" value="${member.firstName}"/>
+                        <input type="text" name="firstName" size="50" value="${member.firstName}" required="required"/>
                     </td> <!-- table data cell -->
                 </tr>
                 <tr> 
                     <th id="lnr" >Last name:</th>
                     <td colspan="2">
-                        <input type="text" name="lastName" size="50" value="${member.lastName}"/>
+                        <input type="text" name="lastName" size="50" value="${member.lastName}" required="required"/>
                     </td>
                 </tr>
 
@@ -44,7 +44,7 @@
                                     <c:set var="selected" value="value='${voice.code}'" scope="page" />
                                     <c:set var="voiceName" value="${voice.name}" scope="page" />
                                 <c:if test="${member.voice.code==voice.code}">
-                                    <c:set var="selected" value="selected='${member.voice.code}'" scope="page" />
+                                    <c:set var="selected" value="value='${member.voice.code}' selected='${member.voice.code}'" scope="page" />
                                     <c:set var="voiceName" value="${member.voice.name}" scope="page" />
                                 </c:if>
                                     <option ${selected}>${voiceName}</option>
@@ -69,7 +69,7 @@
                 <tr> 
                     <th>Date of birth:</th>
                     <td colspan="2">
-                        <input type="date" name="dateOfBirth" value="<fmt:formatDate pattern='yyyy-MM-dd' value='${member.dateOfBirth}'/>" />
+                        <input type="date" name="dateOfBirth" value="<fmt:formatDate pattern='yyyy-MM-dd' value='${member.dateOfBirth}'/>" required="required" />
                     </td>
                 </tr>
                 <tr> 
@@ -78,16 +78,16 @@
                 </tr>
                 <tr> 
                     <th>District:</th>
-                    <td><input type="text" name="zipCode" maxlength="4" size="4" placeholder="Zip" value="${member.zipCode}"/></td>
-                    <td style="text-align: right;"><input type="text" placeholder="City goes here" name="city" size="35" value="${member.city}" /></td>
+                    <td><input type="text" name="zipCode" maxlength="4" size="4" placeholder="Zip" value="${member.zipCode}" required="required"/></td>
+                    <td style="text-align: right;"><input type="text" placeholder="City goes here" name="city" size="35" value="${member.city}" required="required"/></td>
                 </tr>
                 <tr> 
                     <th>Phone:</th>
-                    <td colspan="2"><input type="text" name="phone"  size="50" value="${member.phone}"/></td>
+                    <td colspan="2"><input type="text" name="phone"  size="50" value="${member.phone}" required="required"/></td>
                 </tr>
                 <tr> 
                     <th>Email:</th>
-                    <td colspan="2"><input type="email" name="email"  size="50" value="${member.email}"/></td>
+                    <td colspan="2"><input type="email" name="email"  size="50" value="${member.email}" required="required"/></td>
                 </tr>
                 <tr> 
                     <th>Password:</th>
