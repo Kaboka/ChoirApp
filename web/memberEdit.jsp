@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -37,11 +38,16 @@
                     <th>Voice:</th>
                     <td colspan="2">
                         <select name="voiceCode">
+                            <c:set var="selected" value="" scope="page"/>
+                            <c:set var="voiceName" value="" scope="page"/>
                             <c:forEach var="voice" items="${voices}">
-                                <c:when test="${voice.code==member.voie.code}">
-                                    <option selected="${member.voice.code}">${member.voice.name}</option>
-                                </c:when>
-                                <option value="${voice.code}">${voice.name}</option>
+                                    <c:set var="selected" value="value='${voice.code}'" scope="page" />
+                                    <c:set var="voiceName" value="${voice.name}" scope="page" />
+                                <c:if test="${member.voice.code==voice.code}">
+                                    <c:set var="selected" value="selected='${member.voice.code}'" scope="page" />
+                                    <c:set var="voiceName" value="${member.voice.name}" scope="page" />
+                                </c:if>
+                                    <option ${selected}>${voiceName}</option>
                             </c:forEach>
                         </select>
                     </td>
@@ -50,23 +56,20 @@
                     <th>Roles:</th>
                     <td colspan="2">
                         <c:forEach var="role" items="${roles}">
+                            <c:set var="checked" value="" scope="page"/>
                             <c:forEach var="memberRole" items="${member.roles}">
-                                    <c:choose>
-                                        <c:when test="${memberRole.code==role.code}">
-                                            <input type="checkbox" name="roleCodes" value="${role.code}" checked/>${role.name}<br/>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <input type="checkbox" name="roleCodes" value="${role.code}"/>${role.name}<br/>
-                                        </c:otherwise>
-                                    </c:choose>
+                                <c:if test="${role.code == memberRole.code}">
+                                  <c:set var="checked" value="checked='checked'" scope="page"/>
+                                </c:if>
                             </c:forEach> 
+                              <input type="checkbox" name="roleCodes" value="${role.code}" ${checked}/>${role.name}<br/>
                         </c:forEach>
                     </td>
                 </tr>
                 <tr> 
                     <th>Date of birth:</th>
                     <td colspan="2">
-                        <input type="date" name="dateOfBirth" value="${member.dateOfBirth}" />
+                        <input type="date" name="dateOfBirth" value="<fmt:formatDate pattern='yyyy-MM-dd' value='${member.dateOfBirth}'/>" />
                     </td>
                 </tr>
                 <tr> 

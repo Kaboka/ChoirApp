@@ -4,6 +4,7 @@
  */
 package dk.cphbusiness.choir.view;
 
+import dk.cphbusiness.choir.commands.CreateMemberCommand;
 import dk.cphbusiness.choir.commands.MainCommand;
 import dk.cphbusiness.choir.commands.LoginCommand;
 import dk.cphbusiness.choir.commands.TargetCommand;
@@ -39,7 +40,7 @@ public class ChoirFactory {
         commands.put("viewMember", new ViewMemberCommand("memberView.jsp"));
         commands.put("editMember", new EditMemberCommand("memberEdit.jsp"));
         commands.put("saveMember", new SaveMemberCommand("memberView.jsp"));
-        commands.put("cancelMember", new TargetCommand("memberList.jsp"));
+        commands.put("cancelMember", new ListMembersCommand("memberList.jsp"));
         commands.put("createMember", new CreateMemberCommand("memberEdit.jsp"));
     }
 

@@ -26,6 +26,7 @@ public class FrontController extends HttpServlet {
         String commandKey = request.getParameter("command");
         Command command = ChoirFactory.getInstance().findCommand(commandKey);
         String target = null;
+        request.setCharacterEncoding("utf-8");
         try {
             target = command.execute(request);
         } catch (CommandException ce) {
