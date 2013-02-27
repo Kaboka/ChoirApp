@@ -37,56 +37,54 @@
                     <th>Voice:</th>
                     <td colspan="2">
                         <select name="voiceCode">
-                            <!--	    <c:forEach var="voice" items="${voices}">
-                                          <option value="${voice.code}">${voice.name}</option>
-                            </c:forEach>-->
-                            <option value="0">Other</option>
-                            <option value="1">1st soprano</option>
-                            <option value="2">2nd soprano</option>
-                            <option value="4">1st alto</option>
-                            <option value="8">2nd alto</option>
-                            <option value="16">1st tenor</option>
-                            <option value="32">2nd tenor</option>
-                            <option value="64">1st bass</option>
-                            <option value="128">2nd bass</option>
-                            <option value="256">Conductor</option>
-                            <option value="512">Pianist</option>
+                            <c:forEach var="voice" items="${voices}">
+                                <c:when test="${voice.code==member.voie.code}">
+                                    <option selected="${member.voice.code}">${member.voice.name}</option>
+                                </c:when>
+                                <option value="${voice.code}">${voice.name}</option>
+                            </c:forEach>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <th>Roles:</th>
                     <td colspan="2">
-                        <!--	  <c:forEach var="role" items="${roles}">
-                                    <input type="checkbox" name="roleCodes" value="${role.code}"/>${role.name}<br/>  
-                        </c:forEach>-->
-                        <input type="checkbox" name="roleCodes" value="ADM"/>Administrator<br/>
-                        <input type="checkbox" name="roleCodes" value="BRD"/>Board<br/>
-                        <input type="checkbox" name="roleCodes" value="REP"/>Repertoire<br/>
+                        <c:forEach var="role" items="${roles}">
+                            <c:forEach var="memberRole" items="${member.roles}">
+                                    <c:choose>
+                                        <c:when test="${memberRole.code==role.code}">
+                                            <input type="checkbox" name="roleCodes" value="${role.code}" checked/>${role.name}<br/>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <input type="checkbox" name="roleCodes" value="${role.code}"/>${role.name}<br/>
+                                        </c:otherwise>
+                                    </c:choose>
+                            </c:forEach> 
+                        </c:forEach>
                     </td>
                 </tr>
                 <tr> 
                     <th>Date of birth:</th>
                     <td colspan="2">
-                        <input type="date" name="dateOfBirth" />
+                        <input type="date" name="dateOfBirth" value="${member.dateOfBirth}" />
                     </td>
                 </tr>
                 <tr> 
                     <th>Street:</th>
-                    <td colspan="2"><input type="text" name="street"  size="50"/></td>
+                    <td colspan="2"><input type="text" name="street"  size="50" value="${member.street}"/></td>
                 </tr>
                 <tr> 
                     <th>District:</th>
-                    <td><input type="text" name="zipCode" maxlength="4" size="4" placeholder="Zip"/></td>
-                    <td style="text-align: right;"><input type="text" placeholder="City goes here" name="city" size="35" /></td>
+                    <td><input type="text" name="zipCode" maxlength="4" size="4" placeholder="Zip" value="${member.zipCode}"/></td>
+                    <td style="text-align: right;"><input type="text" placeholder="City goes here" name="city" size="35" value="${member.city}" /></td>
                 </tr>
                 <tr> 
                     <th>Phone:</th>
-                    <td colspan="2"><input type="text" name="phone"  size="50"/></td>
+                    <td colspan="2"><input type="text" name="phone"  size="50" value="${member.phone}"/></td>
                 </tr>
                 <tr> 
                     <th>Email:</th>
-                    <td colspan="2"><input type="email" name="email"  size="50"/></td>
+                    <td colspan="2"><input type="email" name="email"  size="50" value="${member.email}"/></td>
                 </tr>
                 <tr> 
                     <th>Password:</th>

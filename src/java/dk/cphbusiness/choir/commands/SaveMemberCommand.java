@@ -9,6 +9,8 @@ import dk.cphbusiness.choir.contract.dto.MemberAuthentication;
 import dk.cphbusiness.choir.contract.dto.MemberDetail;
 import dk.cphbusiness.choir.contract.eto.AuthenticationException;
 import dk.cphbusiness.choir.contract.eto.NoSuchMemberException;
+import dk.cphbusiness.choir.model.ItemNotFoundException;
+import dk.cphbusiness.choir.model.Member;
 import dk.cphbusiness.choir.view.ChoirFactory;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,15 +41,18 @@ public class SaveMemberCommand extends TargetCommand{
             String email = request.getParameter("email");
             String password = request.getParameter("password");
             int voiceCode = Integer.parseInt(request.getParameter("voiceCode"));
-//            String[] roleCodes = request.getParameter("roleCodes");
-            String[] roleCodes = {"REP"};
+            String[] roleCodes = request.getParameterValues("roleCodes");
+
             
             MemberDetail member = new MemberDetail(id, firstName, lastName, title, false, false, null, voiceCode, roleCodes, street, zipCode, city, email, phone);
         try {
             member = manager.saveMember((MemberAuthentication)request.getSession().getAttribute("loggedin"),member);
+            Member.find(id).setPassword(password);
         } catch (NoSuchMemberException ex) {
             Logger.getLogger(SaveMemberCommand.class.getName()).log(Level.SEVERE, null, ex);
         } catch (AuthenticationException ex) {
+            Logger.getLogger(SaveMemberCommand.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ItemNotFoundException ex) {
             Logger.getLogger(SaveMemberCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
             

@@ -27,16 +27,14 @@ public class EditMemberCommand extends TargetCommand{
     public String execute(HttpServletRequest request) throws CommandException {
         ChoirManager manager = ChoirFactory.getInstance().getManager();
         long id = Long.parseLong(request.getParameter("id"));
-//        request.setAttribute("roles", manager.listRoles());
-//        request.setAttribute("voices", manager.listVoices());
+        request.setAttribute("roles", manager.listRoles());
+        request.setAttribute("voices", manager.listVoices());
         try {
             MemberDetail member = manager.findMember(id);
             request.setAttribute("member",member); 
         } catch (NoSuchMemberException ex) {
             Logger.getLogger(ViewMemberCommand.class.getName()).log(Level.SEVERE, null, ex);
         }  
-            //request.setAttribute("voices", manager.listVoices());
-            //request.setAttribute("roles", manager.listRoles());
         return super.execute(request);
     }
  
