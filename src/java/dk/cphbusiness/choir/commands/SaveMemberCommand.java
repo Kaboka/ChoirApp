@@ -2,13 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package dk.cphbusiness.choir.view;
+package dk.cphbusiness.choir.commands;
 
 import dk.cphbusiness.choir.contract.ChoirManager;
 import dk.cphbusiness.choir.contract.dto.MemberAuthentication;
 import dk.cphbusiness.choir.contract.dto.MemberDetail;
 import dk.cphbusiness.choir.contract.eto.AuthenticationException;
 import dk.cphbusiness.choir.contract.eto.NoSuchMemberException;
+import dk.cphbusiness.choir.view.ChoirFactory;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;

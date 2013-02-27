@@ -2,9 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package dk.cphbusiness.choir.view;
+package dk.cphbusiness.choir.commands;
 
 import dk.cphbusiness.choir.contract.ChoirManager;
+import dk.cphbusiness.choir.view.ChoirFactory;
 import javax.servlet.http.HttpServletRequest;
 
 /**

@@ -1,4 +1,4 @@
-package dk.cphbusiness.choir.view;
+package dk.cphbusiness.choir.commands;
 
 import javax.servlet.http.HttpServletRequest;
 

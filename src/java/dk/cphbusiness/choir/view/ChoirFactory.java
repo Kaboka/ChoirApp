@@ -4,6 +4,14 @@
  */
 package dk.cphbusiness.choir.view;
 
+import dk.cphbusiness.choir.commands.MainCommand;
+import dk.cphbusiness.choir.commands.LoginCommand;
+import dk.cphbusiness.choir.commands.TargetCommand;
+import dk.cphbusiness.choir.commands.Command;
+import dk.cphbusiness.choir.commands.ListMembersCommand;
+import dk.cphbusiness.choir.commands.SaveMemberCommand;
+import dk.cphbusiness.choir.commands.ViewMemberCommand;
+import dk.cphbusiness.choir.commands.EditMemberCommand;
 import dk.cphbusiness.choir.contract.ChoirManager;
 import dk.cphbusiness.choir.control.DummyChoirManager;
 import java.util.HashMap;

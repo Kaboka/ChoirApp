@@ -4,6 +4,8 @@
  */
 package dk.cphbusiness.choir.view;
 
+import dk.cphbusiness.choir.commands.Command;
+import dk.cphbusiness.choir.commands.CommandException;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
