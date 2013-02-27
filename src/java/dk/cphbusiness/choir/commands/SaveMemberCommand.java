@@ -49,6 +49,7 @@ public class SaveMemberCommand extends TargetCommand {
         int voiceCode = Integer.parseInt(request.getParameter("voiceCode"));
         String[] roleCodes = null;
         if(request.getParameterValues("roleCodes")==null){
+            roleCodes = new String[0];
         }else{
             roleCodes = request.getParameterValues("roleCodes"); 
         }
@@ -61,14 +62,15 @@ public class SaveMemberCommand extends TargetCommand {
         MemberDetail member = new MemberDetail(id, firstName, lastName, title, false, false, dateOfBirth, voiceCode, roleCodes, street, zipCode, city, email, phone);
         try {
             member = manager.saveMember((MemberAuthentication) request.getSession().getAttribute("loggedin"), member);
-            Member.find(id).setPassword(password);
+//            Member.find(id).setPassword(password);
         } catch (NoSuchMemberException ex) {
             Logger.getLogger(SaveMemberCommand.class.getName()).log(Level.SEVERE, null, ex);
         } catch (AuthenticationException ex) {
             Logger.getLogger(SaveMemberCommand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ItemNotFoundException ex) {
-            Logger.getLogger(SaveMemberCommand.class.getName()).log(Level.SEVERE, null, ex);
         } 
+//        catch (ItemNotFoundException ex) {
+//            Logger.getLogger(SaveMemberCommand.class.getName()).log(Level.SEVERE, null, ex);
+//        } 
         request.getSession().setAttribute("member", member);
 
 
