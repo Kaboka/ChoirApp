@@ -30,6 +30,7 @@
         </form>
         <form>
         <button type="submit" name="command" value="main">Back to Main</button>
+        <button type="submit" name="command" value="createMember">Create Member</button>
         </form>
     </body>
 </html>
