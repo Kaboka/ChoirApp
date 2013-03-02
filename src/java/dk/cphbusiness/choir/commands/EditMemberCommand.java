@@ -32,8 +32,11 @@ public class EditMemberCommand extends TargetCommand{
         try {
             MemberDetail member = manager.findMember(id);
             request.setAttribute("member",member); 
-        } catch (NoSuchMemberException ex) {
-            Logger.getLogger(ViewMemberCommand.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMemberException nsme) {
+            Logger.getLogger(ViewMemberCommand.class.getName()).log(Level.SEVERE, null, nsme);
+            throw new CommandException(
+            "Edit Member Command",
+            nsme.getMessage()+" id: "+nsme.getId(), nsme);
         }  
         return super.execute(request);
     }

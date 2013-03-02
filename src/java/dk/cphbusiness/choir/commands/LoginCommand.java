@@ -29,10 +29,13 @@ public class LoginCommand extends TargetCommand {
         String target = super.execute(request); 
         try {
            session.setAttribute("loggedIn", manager.login(request.getParameter("userName"), request.getParameter("password")));
-        } catch (AuthenticationException ex) {
+        } catch (AuthenticationException ae) {
             session.removeAttribute("loggedIn");
             target = "login.jsp";
-            Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ex);       
+            Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ae);
+            throw new CommandException(
+            "Failed Login combination",
+            ae.getMessage(), ae);
         }
         
         return target; 

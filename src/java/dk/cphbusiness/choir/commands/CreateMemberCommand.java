@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package dk.cphbusiness.choir.view;
+package dk.cphbusiness.choir.commands;
 import dk.cphbusiness.choir.commands.TargetCommand;
 import dk.cphbusiness.choir.commands.CommandException;
 import dk.cphbusiness.choir.contract.ChoirManager;

@@ -4,6 +4,7 @@
  */
 package dk.cphbusiness.choir.view;
 
+import dk.cphbusiness.choir.commands.CreateMemberCommand;
 import dk.cphbusiness.choir.commands.MainCommand;
 import dk.cphbusiness.choir.commands.LoginCommand;
 import dk.cphbusiness.choir.commands.TargetCommand;
