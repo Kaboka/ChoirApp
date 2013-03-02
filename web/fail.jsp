@@ -6,7 +6,14 @@
         <title>Failure</title>
     </head>
     <body>
-        <h1>FAILURE in ${failure.command}</h1>
-        <h3>${failure.message}</h3>
+        <h1>FAILURE in ${cause}</h1>
+        <h3>${message}</h3>
+        <table>
+            <tr>
+                <td>
+                    ${stackTrace}
+                </td>
+            </tr>
+        </table>
     </body>
 </html>
