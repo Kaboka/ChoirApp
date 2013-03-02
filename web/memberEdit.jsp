@@ -10,16 +10,26 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="choirLayout.css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Member Edit</title>
     </head>
     <body>
-        <h1 style="color: black;">Member Edit</h1>
-        <!-- h1>Ikke blå</h1 -->
+        <div class="container">
+            <div class="header">
+                <h1>Choir Edit Member Page</h1>
+            </div>
+            <div class="pages">
+                <ul>
+                    <li><a href="404.jsp">Does nothing</a></li>
+                </ul>
+        </div>
         <form
             action="FrontController"
             method="post">
             <input type="hidden" name="id" value="${member.id}"/>
+            <div class="content-container1">
+                <div class="content">
             <table border="0" cellspacing="0" cellpadding="4">
                 <tr> <!-- table row = række -->
                     <th>First name:</th> <!-- table header cell -->
@@ -101,7 +111,12 @@
                     </td>
                 </tr>
             </table> 
+                </div>
+                <div class="footer">
+                        @CPH-Business, 3rd Semester, KA1
+                    </div>
+            </div>
         </form>
-
+        </div>
     </body>
 </html>
