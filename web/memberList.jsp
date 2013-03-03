@@ -9,28 +9,44 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="choirLayout.css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Member list</title>
     </head>
     <body>
-        <h1>Member list</h1>
-        <form>
-        <table>
+        <div class="container">
+        <div class="header"><h1>Choir Memberlist Page</h1></div>
+        <div class="pages">
+                <ul>
+                    <li><a href="FrontController?command=main">Home</a></li>
+                    <li><a href="FrontController?command=createMember">Create Member</a></li>
+                </ul>
+        </div>
+        <div class="content-container1">
+            <div class="content">
+                <h2>Members:</h2>
+        
+            
             <c:forEach var="member" items="${members}">
-                <tr><td>
+                <form>
+                    <div>
                 <c:out value="${member.name}"></c:out>
+                    </div>
+                    <div>
                 <input type="hidden" name="id" value="${member.id}"/>
-                    </td>
-                    <td>
+                </div>
+                <div>
                         <button type="submit" name="command" value="viewMember">View</button>
-                    </td>
-                </tr>
+                </div>
+             </form>
+                <br/>
             </c:forEach>
-        </table>
-        </form>
-        <form>
-        <button type="submit" name="command" value="main">Back to Main</button>
-        <button type="submit" name="command" value="createMember">Create Member</button>
-        </form>
+        
+            </div>
+                <div class="footer">
+                        @CPH-Business, 3rd Semester, KA1
+                    </div>
+            </div>
+        </div>
     </body>
 </html>

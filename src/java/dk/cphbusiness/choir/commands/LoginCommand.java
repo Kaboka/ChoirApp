@@ -34,7 +34,7 @@ public class LoginCommand extends TargetCommand {
             target = "login.jsp";
             Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ae);
             throw new CommandException(
-            "Failed Login combination",
+            "Failed to log in",
             ae.getMessage(), ae);
         }
         

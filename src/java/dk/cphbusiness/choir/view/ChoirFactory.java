@@ -40,7 +40,7 @@ public class ChoirFactory {
         commands.put("viewMember", new ViewMemberCommand("memberView.jsp"));
         commands.put("editMember", new EditMemberCommand("memberEdit.jsp"));
         commands.put("saveMember", new SaveMemberCommand("memberView.jsp"));
-        commands.put("cancelMember", new TargetCommand("memberList.jsp"));
+        commands.put("cancelMember", new ListMembersCommand("memberList.jsp"));
         commands.put("createMember", new CreateMemberCommand("memberEdit.jsp"));
     }
 
