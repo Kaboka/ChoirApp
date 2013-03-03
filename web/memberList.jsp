@@ -25,11 +25,10 @@
         <div class="content-container1">
             <div class="content">
                 <h2>Members:</h2>
-        
-            
+        <table>
             <c:forEach var="member" items="${members}">
-                <form>
-                    <div>
+              <form>
+                <tr><td>
                 <c:out value="${member.name}"></c:out>
                     </div>
                     <div>
@@ -37,11 +36,11 @@
                 </div>
                 <div>
                         <button type="submit" name="command" value="viewMember">View</button>
-                </div>
+                    </td>
+                </tr>
              </form>
-                <br/>
             </c:forEach>
-        
+        </table>
             </div>
                 <div class="footer">
                         @CPH-Business, 3rd Semester, KA1
