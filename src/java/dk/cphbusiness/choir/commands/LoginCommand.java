@@ -33,9 +33,7 @@ public class LoginCommand extends TargetCommand {
             session.removeAttribute("loggedIn");
             target = "login.jsp";
             Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ae);
-            throw new CommandException(
-            "Failed to log in",
-            ae.getMessage(), ae);
+            request.setAttribute("errorMessage", "Error in name or password");
         }
         
         return target; 

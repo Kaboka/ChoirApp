@@ -13,6 +13,7 @@
     </head>
     <body>
         <h1>Choir Login</h1>
+        <p>${errorMessage}</p>
         <form>
             <table>
                 <tr>
