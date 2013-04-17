@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package dk.cphbusiness.choir.commands;
 
 import dk.cphbusiness.choir.contract.ChoirManager;
@@ -9,8 +5,6 @@ import dk.cphbusiness.choir.contract.dto.MemberAuthentication;
 import dk.cphbusiness.choir.contract.dto.MemberDetail;
 import dk.cphbusiness.choir.contract.eto.AuthenticationException;
 import dk.cphbusiness.choir.contract.eto.NoSuchMemberException;
-import dk.cphbusiness.choir.model.ItemNotFoundException;
-import dk.cphbusiness.choir.model.Member;
 import dk.cphbusiness.choir.view.ChoirFactory;
 import java.text.DateFormat;
 import java.text.ParseException;

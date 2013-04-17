@@ -7,17 +7,14 @@ package dk.cphbusiness.choir.view;
 import dk.cphbusiness.choir.commands.CreateMemberCommand;
 import dk.cphbusiness.choir.commands.MainCommand;
 import dk.cphbusiness.choir.commands.LoginCommand;
-import dk.cphbusiness.choir.commands.TargetCommand;
 import dk.cphbusiness.choir.commands.Command;
 import dk.cphbusiness.choir.commands.ListMembersCommand;
 import dk.cphbusiness.choir.commands.SaveMemberCommand;
 import dk.cphbusiness.choir.commands.ViewMemberCommand;
 import dk.cphbusiness.choir.commands.EditMemberCommand;
 import dk.cphbusiness.choir.contract.ChoirManager;
-import dk.cphbusiness.choir.control.DummyChoirManager;
 import java.util.HashMap;
 import java.util.Map;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -31,7 +28,7 @@ public class ChoirFactory {
 
     private ChoirFactory() {
         commands = new HashMap<String, Command>();
-        manager = new DummyChoirManager();
+        manager = new ChoirManagerBean();
         
         
         commands.put("login", new LoginCommand("main.jsp"));
