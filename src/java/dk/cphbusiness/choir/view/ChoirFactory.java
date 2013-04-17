@@ -15,20 +15,25 @@ import dk.cphbusiness.choir.commands.EditMemberCommand;
 import dk.cphbusiness.choir.contract.ChoirManager;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 /**
  *
  * @author Kasper
  */
 public class ChoirFactory {
+    ChoirManager manager = lookupChoirManagerBeanRemote();
 
     private static ChoirFactory instance = null;
     private Map<String, Command> commands;
-    private ChoirManager manager;
+    
 
     private ChoirFactory() {
         commands = new HashMap<String, Command>();
-        manager = new ChoirManagerBean();
         
         
         commands.put("login", new LoginCommand("main.jsp"));
@@ -57,5 +62,15 @@ public class ChoirFactory {
 
     public ChoirManager getManager() {
         return manager;
+    }
+
+    private ChoirManager lookupChoirManagerBeanRemote() {
+        try {
+            Context c = new InitialContext();
+            return (ChoirManager) c.lookup("java:global/ChoirBackend/ChoirManagerBean!dk.cphbusiness.choir.contract.ChoirManager");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
     }
 }
