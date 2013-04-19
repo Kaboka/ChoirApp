@@ -64,7 +64,7 @@ public class SaveMemberCommand extends TargetCommand {
             member = manager.saveMember((MemberAuthentication) request.getSession().getAttribute("loggedin"), member);
 //            Member.find(id).setPassword(password);
         } catch (NoSuchMemberException ex) {
-            Logger.getLogger(SaveMemberCommand.class.getName()).log(Level.SEVERE, null, ex);
+            throw new CommandException("Saving failed", ex.getMessage(), ex);
         } catch (AuthenticationException ex) {
             Logger.getLogger(SaveMemberCommand.class.getName()).log(Level.SEVERE, null, ex);
         } 

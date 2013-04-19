@@ -25,17 +25,17 @@ public class LoginCommand extends TargetCommand {
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
         ChoirManager manager = ChoirFactory.getInstance().getManager();
-        HttpSession session = request.getSession();
-        String target = super.execute(request); 
+        HttpSession session = request.getSession();; 
         try {
            session.setAttribute("loggedIn", manager.login(request.getParameter("userName"), request.getParameter("password")));
+            System.out.println("Sucess");
         } catch (AuthenticationException ae) {
+            System.out.println("Fail");
             session.removeAttribute("loggedIn");
-            target = "login.jsp";
             Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ae);
             request.setAttribute("errorMessage", "Error in name or password");
         }
-        
+        String target = super.execute(request);
         return target; 
     }
     

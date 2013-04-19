@@ -11,6 +11,10 @@ public class TargetCommand implements Command {
 
   @Override
   public String execute(HttpServletRequest request) throws CommandException {
+        if(request.getSession().getAttribute("loggedIn")== null)
+        {
+            target = "login.jsp";
+        }
     return target;
   }
 }

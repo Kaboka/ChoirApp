@@ -32,11 +32,9 @@ public class ChoirFactory {
     private ChoirFactory() {
         commands = new HashMap<String, Command>();
         manager = new DummyChoirManager();
-        
-        
         commands.put("login", new LoginCommand("main.jsp"));
-        commands.put("main", new MainCommand("main.jsp"));
-        commands.put("listMembers", new ListMembersCommand("memberList.jsp"));
+        commands.put("main", new TargetCommand("main.jsp"));
+        commands.put("listMembers", new ListMembersCommand("mobileMemberSide.jsp"));
         commands.put("viewMember", new ViewMemberCommand("memberView.jsp"));
         commands.put("editMember", new EditMemberCommand("memberEdit.jsp"));
         commands.put("saveMember", new SaveMemberCommand("memberView.jsp"));
@@ -52,7 +50,7 @@ public class ChoirFactory {
     }
 
     public Command findCommand(String key) {
-        if (key == null) {
+        if(key == null){
             key = "main";
         }
         return commands.get(key);

@@ -20,10 +20,6 @@ public class MainCommand extends TargetCommand{
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
         String target = super.execute(request);
-        if(request.getSession().getAttribute("loggedIn")== null)
-        {
-            target = "login.jsp";
-        }
         return target; //To change body of generated methods, choose Tools | Templates.
     }
     
