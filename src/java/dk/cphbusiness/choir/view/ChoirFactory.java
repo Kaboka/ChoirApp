@@ -7,27 +7,30 @@ package dk.cphbusiness.choir.view;
 import dk.cphbusiness.choir.commands.CreateMemberCommand;
 import dk.cphbusiness.choir.commands.MainCommand;
 import dk.cphbusiness.choir.commands.LoginCommand;
-import dk.cphbusiness.choir.commands.TargetCommand;
 import dk.cphbusiness.choir.commands.Command;
 import dk.cphbusiness.choir.commands.ListMembersCommand;
 import dk.cphbusiness.choir.commands.SaveMemberCommand;
 import dk.cphbusiness.choir.commands.ViewMemberCommand;
 import dk.cphbusiness.choir.commands.EditMemberCommand;
 import dk.cphbusiness.choir.contract.ChoirManager;
-import dk.cphbusiness.choir.control.DummyChoirManager;
 import java.util.HashMap;
 import java.util.Map;
-import javax.servlet.http.HttpSession;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 /**
  *
  * @author Kasper
  */
 public class ChoirFactory {
+    ChoirManager manager = lookupChoirManagerBeanRemote();
 
     private static ChoirFactory instance = null;
     private Map<String, Command> commands;
-    private ChoirManager manager;
+    
 
     private ChoirFactory() {
         commands = new HashMap<String, Command>();
@@ -58,5 +61,15 @@ public class ChoirFactory {
 
     public ChoirManager getManager() {
         return manager;
+    }
+
+    private ChoirManager lookupChoirManagerBeanRemote() {
+        try {
+            Context c = new InitialContext();
+            return (ChoirManager) c.lookup("java:global/ChoirBackend/ChoirManagerBean!dk.cphbusiness.choir.contract.ChoirManager");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
     }
 }
