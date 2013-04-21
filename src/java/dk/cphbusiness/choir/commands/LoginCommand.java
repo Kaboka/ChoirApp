@@ -28,7 +28,7 @@ public class LoginCommand extends TargetCommand {
         HttpSession session = request.getSession();; 
         try {
            session.setAttribute("loggedIn", manager.login(request.getParameter("userName"), request.getParameter("password")));
-            System.out.println("Sucess");
+            System.out.println("Sucessdfdsf");
         } catch (AuthenticationException ae) {
             System.out.println("Fail");
             session.removeAttribute("loggedIn");
