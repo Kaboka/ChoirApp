@@ -13,7 +13,7 @@ public class TargetCommand implements Command {
   public String execute(HttpServletRequest request) throws CommandException {
         if(request.getSession().getAttribute("loggedIn")== null)
         {
-            target = "login.jsp";
+            target = "loginMobile.jsp";
         }
     return target;
   }

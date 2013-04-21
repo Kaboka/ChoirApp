@@ -28,7 +28,7 @@ import javax.naming.NamingException;
  * @author Kasper
  */
 public class ChoirFactory {
-    ChoirManager manager = lookupChoirManagerBeanRemote();
+    ChoirManager manager = new DummyChoirManager();
 
     private static ChoirFactory instance = null;
     private Map<String, Command> commands;
@@ -36,7 +36,6 @@ public class ChoirFactory {
 
     private ChoirFactory() {
         commands = new HashMap<String, Command>();
-        manager = new DummyChoirManager();
         commands.put("login", new LoginCommand("main.jsp"));
         commands.put("main", new TargetCommand("main.jsp"));
         commands.put("listMembers", new ListMembersCommand("mobileMemberSide.jsp"));
@@ -65,13 +64,14 @@ public class ChoirFactory {
         return manager;
     }
 
-    private ChoirManager lookupChoirManagerBeanRemote() {
-        try {
-            Context c = new InitialContext();
-            return (ChoirManager) c.lookup("java:global/ChoirBackend/ChoirManagerBean!dk.cphbusiness.choir.contract.ChoirManager");
-        } catch (NamingException ne) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
-            throw new RuntimeException(ne);
-        }
-    }
+//    private ChoirManager lookupChoirManagerBeanRemote() {
+//        try {
+//            Context c = new InitialContext();
+//            return (ChoirManager) c.lookup("java:global/ChoirBackend/ChoirManagerBean!dk.cphbusiness.choir.contract.ChoirManager");
+//        } catch (NamingException ne) {
+//            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+//            throw new RuntimeException(ne);
+//        }
+//    }
+    
 }
