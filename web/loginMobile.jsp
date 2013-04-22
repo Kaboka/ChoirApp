@@ -49,13 +49,13 @@
                         <label for="userName">
                             Username
                         </label>
-                        <input name="userName" id="userName" placeholder="username" value="User Name" type="text" />
+                        <input name="userName" id="userName" placeholder="Username" type="text" />
                     </div>
                     <div data-role="fieldcontain" id="password">
                         <label for="password">
                             Password
                         </label>
-                        <input name="password" id="password" placeholder="password" value="Password" type="password" />
+                        <input name="password" id="password" placeholder="Password" type="password" />
                     </div>
                     <a data-role="button" data-transition="none" data-theme="a">
                         Log in
