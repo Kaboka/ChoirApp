@@ -41,4 +41,9 @@
         <ejb-ref-type>Session</ejb-ref-type>
         <remote>dk.cphbusiness.choir.contract.ChoirManager</remote>
     </ejb-ref>
+    <ejb-ref>
+        <ejb-ref-name>ChoirManagerBean2</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <remote>dk.cphbusiness.choir.contract.ChoirManager</remote>
+    </ejb-ref>
 </web-app>

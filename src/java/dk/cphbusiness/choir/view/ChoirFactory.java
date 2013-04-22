@@ -23,6 +23,7 @@ import java.util.Map;
  * @author Kasper
  */
 public class ChoirFactory {
+    
     ChoirManager manager = new DummyChoirManager();
 
     private static ChoirFactory instance = null;
@@ -39,7 +40,7 @@ public class ChoirFactory {
         commands.put("saveMember", new SaveMemberCommand("memberView.jsp"));
         commands.put("cancelMember", new ListMembersCommand("memberList.jsp"));
         commands.put("createMember", new CreateMemberCommand("memberEdit.jsp"));
-        commands.put("listMaterials", new ListMaterialsCommand("materialList.jsp"));
+        commands.put("listMaterials", new ListMaterialsCommand("mobileMaterials.jsp"));
     }
 
     public static ChoirFactory getInstance() {

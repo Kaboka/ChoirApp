@@ -27,6 +27,9 @@
                     <div class="content">   
                         <h2>Logged in member:</h2> 
                         <p>${loggedIn.name}</p>
+                        <form>
+                            <button type="submit" value="listMaterials" name="command">List Materials</button>
+                        </form>
                     </div>
                     <div class="footer">
                         @CPH-Business, 3rd Semester, KA1
