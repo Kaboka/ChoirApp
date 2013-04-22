@@ -14,17 +14,21 @@ import dk.cphbusiness.choir.commands.EditMemberCommand;
 import dk.cphbusiness.choir.commands.ListMaterialsCommand;
 import dk.cphbusiness.choir.commands.TargetCommand;
 import dk.cphbusiness.choir.contract.ChoirManager;
-import dk.cphbusiness.choir.control.DummyChoirManager;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 /**
  *
  * @author Kasper
  */
 public class ChoirFactory {
+    ChoirManager manager = lookupChoirManagerBeanRemote1();
     
-    ChoirManager manager = new DummyChoirManager();
 
     private static ChoirFactory instance = null;
     private Map<String, Command> commands;
@@ -36,7 +40,7 @@ public class ChoirFactory {
         commands.put("main", new TargetCommand("main.jsp"));
         commands.put("listMembers", new ListMembersCommand("mobileMemberSide.jsp"));
         commands.put("viewMember", new ViewMemberCommand("memberView.jsp"));
-        commands.put("editMember", new EditMemberCommand("memberEdit.jsp"));
+        commands.put("editMember", new EditMemberCommand("mobileMemberEdit.jsp"));
         commands.put("saveMember", new SaveMemberCommand("memberView.jsp"));
         commands.put("cancelMember", new ListMembersCommand("memberList.jsp"));
         commands.put("createMember", new CreateMemberCommand("memberEdit.jsp"));
@@ -61,14 +65,15 @@ public class ChoirFactory {
         return manager;
     }
 
-//    private ChoirManager lookupChoirManagerBeanRemote() {
-//        try {
-//            Context c = new InitialContext();
-//            return (ChoirManager) c.lookup("java:global/ChoirBackend/ChoirManagerBean!dk.cphbusiness.choir.contract.ChoirManager");
-//        } catch (NamingException ne) {
-//            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
-//            throw new RuntimeException(ne);
-//        }
-//    }
+
+    private ChoirManager lookupChoirManagerBeanRemote1() {
+        try {
+            Context c = new InitialContext();
+            return (ChoirManager) c.lookup("java:global/ChoirBackendNowItsFinal/ChoirManagerBean!dk.cphbusiness.choir.contract.ChoirManager");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
     
 }

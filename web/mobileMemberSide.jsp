@@ -43,6 +43,8 @@
                         $("#" + id).append("<li> City:" + data.city + "</li>");
                         $("#" + id).append("<li> Email:<a href=':mailto'" + data.email + "rel='external'>"+ data.email + "</a></li>");
                         $("#" + id).append("<li> Phone: <a href=':tel'" + data.phone + "rel='external'>"+ data.phone + "</a></li>");
+ //                       $("#" + id).append("<form><input type=\"hidden\" name=\"id\" value=\"" + id + "\"/><button type=\"submit\" name=\"command\" value=\"editMember\">Edit</button></form>");
+                        $("#" + id).append("<a data-role='button' href='FrontController?command=editMember&id=" + id + "'>Edit</a>");
                     };
                     $("selectmenu1").change(function(){
                         alert(this.id);

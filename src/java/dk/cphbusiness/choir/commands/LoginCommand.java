@@ -25,7 +25,7 @@ public class LoginCommand extends TargetCommand {
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
         ChoirManager manager = ChoirFactory.getInstance().getManager();
-        HttpSession session = request.getSession();; 
+        HttpSession session = request.getSession(); 
         try {
            session.setAttribute("loggedIn", manager.login(request.getParameter("userName"), request.getParameter("password")));
             System.out.println("Sucessdfdsf");

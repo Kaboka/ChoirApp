@@ -25,9 +25,7 @@
             try {
 
     $(function() {
-        $("a").click(function(){
-            $("form").submit();
-        });
+
     });
 
   } catch (error) {
@@ -57,9 +55,7 @@
                         </label>
                         <input name="password" id="password" placeholder="Password" type="password" />
                     </div>
-                    <a data-role="button" data-transition="none" data-theme="a">
-                        Log in
-                    </a>
+                   <input type="submit" value="Log in">
                 </form>
             </div>
         </div>

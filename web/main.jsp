@@ -28,6 +28,7 @@
                         <h2>Logged in member:</h2> 
                         <p>${loggedIn.name}</p>
                         <form>
+                            
                             <button type="submit" value="listMaterials" name="command">List Materials</button>
                         </form>
                     </div>
