@@ -38,6 +38,7 @@
 <div data-role="page" id="page1">
     <div data-role="content">
         <form action="">
+            <input type="hidden" name="id" value="${member.id}"/>
             <div data-role="fieldcontain">
                 <label for="textinput13">
                     First name
@@ -54,21 +55,29 @@
                 <label for="selectmenu2">
                     Voice
                 </label>
-                <select id="selectmenu2" name="voiceCode">
+                <select id="selectmenu" name="voiceCode">
                     <option value="option1">
                         Option 1
                     </option>
                 </select>
             </div>
-            <div id="checkboxes2" data-role="fieldcontain">
+            <div id="checkboxes" data-role="fieldcontain">
                 <fieldset data-role="controlgroup" data-type="vertical">
                     <legend>
                         Roles
                     </legend>
-                    <input id="checkbox2" name="" data-theme="c" type="checkbox">
-                    <label for="checkbox2">
-                        Option
-                    </label>
+                    <c:forEach var="role" items="${roles}">
+                        <c:set var="checked" value="" scope="page"/>
+                        <c:forEach var="memberRole" items="${member.roles}">
+                            <c:if test="${role.code == memberRole.code}">
+                                <c:set var="checked" value="checked='checked'" scope="page"/>
+                            </c:if>
+                            </c:forEach> 
+                                <input id="checkbox" name="" data-theme="c" type="checkbox" vale="${role.code}" ${checked}>
+                                <label for="checkbox">
+                                 ${role.name}
+                                </label>
+                    </c:forEach>
                 </fieldset>
             </div>
             <div data-role="fieldcontain">
