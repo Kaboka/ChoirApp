@@ -37,7 +37,7 @@
         <!-- Home -->
 <div data-role="page" id="page1">
     <div data-role="content">
-        <form action="">
+        <form action="FrontController?command=saveMember">
             <input type="hidden" name="id" value="${member.id}"/>
             <div data-role="fieldcontain">
                 <label for="textinput13">
@@ -52,7 +52,7 @@
                 <input name="lastName" id="textinput14" placeholder="" value="${member.lastName}" type="text">
             </div>
             <div data-role="fieldcontain">
-                <label for="selectmenu2">
+                <label for="selectmenu">
                     Voice
                 </label>
                 <select id="selectmenu" name="voiceCode">
