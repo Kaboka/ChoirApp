@@ -6,7 +6,9 @@ package dk.cphbusiness.choir.view;
 
 import dk.cphbusiness.choir.commands.Command;
 import dk.cphbusiness.choir.commands.CommandException;
+import dk.cphbusiness.choir.contract.ChoirManager;
 import java.io.IOException;
+import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,6 +25,7 @@ public class FrontController extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
         String commandKey = request.getParameter("command");
         Command command = ChoirFactory.getInstance().findCommand(commandKey);
         String target = null;

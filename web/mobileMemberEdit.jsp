@@ -56,9 +56,16 @@
                     Voice
                 </label>
                 <select id="selectmenu" name="voiceCode">
-                    <option value="option1">
-                        Option 1
-                    </option>
+                    <c:forEach var="voice" items="${voices}">
+                        <c:choose>
+                            <c:when test="${member.voice.code==voice.code}">
+                                <option selected="selected" value="${voice.code}">${voice.name}</option>
+                            </c:when>
+                            <c:otherwise>
+                                <option value="${voice.code}">${voice.name}</option>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
                 </select>
             </div>
             <div id="checkboxes" data-role="fieldcontain">
@@ -72,9 +79,9 @@
                             <c:if test="${role.code == memberRole.code}">
                                 <c:set var="checked" value="checked='checked'" scope="page"/>
                             </c:if>
-                            </c:forEach> 
-                                <input id="checkbox" name="" data-theme="c" type="checkbox" vale="${role.code}" ${checked}>
-                                <label for="checkbox">
+                        </c:forEach>
+                                <input id="checkbox${role.code}" name="roleCodes" data-theme="c" type="checkbox" vale="${role.code}" ${checked}>
+                                <label for="checkbox${role.code}">
                                  ${role.name}
                                 </label>
                     </c:forEach>
