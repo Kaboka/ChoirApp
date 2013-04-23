@@ -22,21 +22,32 @@
         <!-- User-generated js -->
         <script>
             try {
+                
+                
     $(function() {
+        
         $("li").click(function(){
             var id = $(this).data("record");
-            $.ajax({ url : "MaterialServlet?id=" + id,
+            $.ajax({ url : "MaterialServlet?id="+id,
                     cache : false,
                     dataType : "json",
-                    success : dataReady});
+                    success : materialReady});
         });
         
-        function dataReady(data){
+        function materialReady(data){
             $("#detail").html("<h3>" + data.title + "</h3>" +
                     "<p>Type: " + data.type + "<br/>" +
                     "Description: " + data.description + "<br/>" +
                     "Music Description: " + data.musicDescription + "</p>");
         }
+        
+        $('input:checkbox1').change(
+        function(){
+        if ($(this).is(':checked')) {
+            alert('checked');
+        }
+        });
+        
     });
 
   } catch (error) {
@@ -54,6 +65,21 @@
                     Materials
                 </h3>
             </div>
+            
+            <div id="checkboxes1" data-role="fieldcontain">
+            <fieldset data-role="controlgroup" data-type="vertical">
+                <legend>
+                    Voices:
+                </legend>
+                <input id="checkbox1" name="" data-theme="c" type="checkbox">
+                <c:forEach var="voice" items="${voices}">
+                <label for="checkbox1" data-record="${voice.code}">
+                    <c:out value="${voice.name}"></c:out>
+                </label>
+                </c:forEach>
+            </fieldset>
+            </div>
+            
             <div data-role="content">
                 <ul class="materialList" data-role="listview" data-divider-theme="b" data-inset="true" data-filter="true">
                     <li data-role="list-divider" role="heading">
@@ -89,9 +115,8 @@
                 
             </div>
             <div data-theme="a" data-role="footer" data-position="fixed">
-                <h3 class="footer">
-                    Choir
-                </h3>
+                <a data-role="button" data-direction="reverse" data-transition="slide" href="#page1" data-icon="home" data-iconpos="left" class="ui-btn-left">
+                </a>
             </div>
         </div>
     </body>

@@ -23,9 +23,9 @@ public class MaterialServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
+        ArrayList<MaterialSummary> materials = new ArrayList<MaterialSummary>(ChoirFactory.getInstance().getManager().listMaterials());
         int id = Integer.parseInt(req.getParameter("id"));
         
-        ArrayList<MaterialSummary> materials = new ArrayList<MaterialSummary>(ChoirFactory.getInstance().getManager().listMaterials());
         Gson json = new Gson();
         
         String material = json.toJson(materials.get(id));
