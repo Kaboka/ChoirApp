@@ -55,6 +55,18 @@ public class SaveMemberCommand extends TargetCommand {
         }
         MemberDetail member = new MemberDetail(id, firstName, lastName, title, false, false, dateOfBirth, voiceCode, roleCodes, street, zipCode, city, email, phone);
         try {
+            System.out.println(id);
+            System.out.println(firstName);
+            System.out.println(lastName);
+            System.out.println(title);
+            System.out.println(dateOfBirth);
+            System.out.println(voiceCode);
+            System.out.println(roleCodes);
+            System.out.println(street);
+            System.out.println(zipCode);
+            System.out.println(city);
+            System.out.println(email);
+            System.out.println(phone);
             member = manager.saveMember((MemberAuthentication) request.getSession().getAttribute("loggedin"), member);
         } catch (NoSuchMemberException ex) {
             throw new CommandException("Saving failed", ex.getMessage(), ex);
