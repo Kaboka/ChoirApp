@@ -80,7 +80,7 @@
                                 <c:set var="checked" value="checked='checked'" scope="page"/>
                             </c:if>
                         </c:forEach>
-                                <input id="checkbox${role.code}" name="roleCodes" data-theme="c" type="checkbox" vale="${role.code}" ${checked}>
+                                <input id="checkbox${role.code}" name="roleCodes" data-theme="c" type="checkbox" value="${role.code}" ${checked}>
                                 <label for="checkbox${role.code}">
                                  ${role.name}
                                 </label>

@@ -5,6 +5,7 @@
 package dk.cphbusiness.choir.commands;
 
 import dk.cphbusiness.choir.contract.ChoirManager;
+import dk.cphbusiness.choir.contract.dto.MemberAuthentication;
 import dk.cphbusiness.choir.contract.eto.AuthenticationException;
 import dk.cphbusiness.choir.view.ChoirFactory;
 import java.util.logging.Level;
@@ -28,7 +29,8 @@ public class LoginCommand extends TargetCommand {
         HttpSession session = request.getSession(); 
         try {
            session.setAttribute("loggedIn", manager.login(request.getParameter("userName"), request.getParameter("password")));
-            System.out.println("Sucessdfdsf");
+           MemberAuthentication authmember = (MemberAuthentication)session.getAttribute("loggedIn");
+            System.out.println(authmember.getId()+ ", " + authmember.getName());
         } catch (AuthenticationException ae) {
             System.out.println("Fail");
             session.removeAttribute("loggedIn");
