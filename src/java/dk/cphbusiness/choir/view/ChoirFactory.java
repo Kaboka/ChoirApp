@@ -4,6 +4,8 @@
  */
 package dk.cphbusiness.choir.view;
 
+import dk.cphbusiness.choir.commands.AjaxCommand;
+import dk.cphbusiness.choir.commands.AjaxViewMaterialCommand;
 import dk.cphbusiness.choir.commands.CreateMemberCommand;
 import dk.cphbusiness.choir.commands.LoginCommand;
 import dk.cphbusiness.choir.commands.Command;
@@ -14,6 +16,7 @@ import dk.cphbusiness.choir.commands.EditMemberCommand;
 import dk.cphbusiness.choir.commands.ListMaterialsCommand;
 import dk.cphbusiness.choir.commands.TargetCommand;
 import dk.cphbusiness.choir.contract.ChoirManager;
+import dk.cphbusiness.choir.control.DummyChoirManager;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -27,15 +30,19 @@ import javax.naming.NamingException;
  * @author Kasper
  */
 public class ChoirFactory {
-    ChoirManager manager = lookupChoirManagerBeanRemote1();
     
+    ChoirManager manager = new DummyChoirManager();
 
     private static ChoirFactory instance = null;
     private Map<String, Command> commands;
+    private Map<String, AjaxCommand> ajaxCommands;
     
 
     private ChoirFactory() {
         commands = new HashMap<String, Command>();
+        ajaxCommands = new HashMap<String, AjaxCommand>();
+        
+        //TargetCommands
         commands.put("login", new LoginCommand("main.jsp"));
         commands.put("main", new TargetCommand("main.jsp"));
         commands.put("listMembers", new ListMembersCommand("mobileMemberSide.jsp"));
@@ -45,6 +52,9 @@ public class ChoirFactory {
         commands.put("cancelMember", new ListMembersCommand("memberList.jsp"));
         commands.put("createMember", new CreateMemberCommand("memberEdit.jsp"));
         commands.put("listMaterials", new ListMaterialsCommand("mobileMaterials.jsp"));
+        
+        //AjaxCommands
+        ajaxCommands.put("ajaxViewMaterial", new AjaxViewMaterialCommand());
     }
 
     public static ChoirFactory getInstance() {
@@ -60,13 +70,16 @@ public class ChoirFactory {
         }
         return commands.get(key);
     }
+    
+    public AjaxCommand findAjaxCommand(String key){
+        return ajaxCommands.get(key);
+    }
 
     public ChoirManager getManager() {
         return manager;
     }
 
-
-    private ChoirManager lookupChoirManagerBeanRemote1() {
+    private ChoirManager lookupChoirManagerBeanRemote() {
         try {
             Context c = new InitialContext();
             return (ChoirManager) c.lookup("java:global/ChoirBackendNowItsFinal/ChoirManagerBean!dk.cphbusiness.choir.contract.ChoirManager");

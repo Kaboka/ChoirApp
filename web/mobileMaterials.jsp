@@ -26,6 +26,8 @@
                 
     $(function() {
         
+        
+        
         $("li").click(function(){
             var id = $(this).data("record");
             $.ajax({ url : "MaterialServlet?id="+id,
@@ -41,11 +43,9 @@
                     "Music Description: " + data.musicDescription + "</p>");
         }
         
-        $('input:checkbox1').change(
-        function(){
-        if ($(this).is(':checked')) {
-            alert('checked');
-        }
+        $("#selectmenu1").change(function(){
+            var id = $(this).find(":selected").data("record");
+            $.ajax({url : "MaterialServlet?")
         });
         
     });
@@ -66,21 +66,22 @@
                 </h3>
             </div>
             
-            <div id="checkboxes1" data-role="fieldcontain">
-            <fieldset data-role="controlgroup" data-type="vertical">
-                <legend>
-                    Voices:
-                </legend>
-                <input id="checkbox1" name="" data-theme="c" type="checkbox">
+            <div data-role="content">
+            <div data-role="fieldcontain">
+            <label for="selectmenu1">
+                Voices:
+            </label>
+            <select id="selectmenu1" name="">
                 <c:forEach var="voice" items="${voices}">
-                <label for="checkbox1" data-record="${voice.code}">
-                    <c:out value="${voice.name}"></c:out>
-                </label>
+                    <option value="${voice.code}" data-record="${voice.code}">
+                        <c:out value="${voice.name}"></c:out>
+                    </option>
                 </c:forEach>
-            </fieldset>
+                
+            </select>
             </div>
             
-            <div data-role="content">
+            
                 <ul class="materialList" data-role="listview" data-divider-theme="b" data-inset="true" data-filter="true">
                     <li data-role="list-divider" role="heading">
                         Materials
@@ -94,6 +95,8 @@
                     </c:forEach>
                 </ul>
             </div>
+            
+            
             <div data-theme="a" data-role="footer" data-position="fixed">
                 <h3 class="footer">
                     Choir
