@@ -26,11 +26,9 @@
                 
     $(function() {
         
-        
-        
         $("li").click(function(){
             var id = $(this).data("record");
-            $.ajax({ url : "MaterialServlet?id="+id,
+            $.ajax({ url : "MaterialServlet?id="+id+"&command=ajaxViewMaterial",
                     cache : false,
                     dataType : "json",
                     success : materialReady});
@@ -45,7 +43,7 @@
         
         $("#selectmenu1").change(function(){
             var id = $(this).find(":selected").data("record");
-            $.ajax({url : "MaterialServlet?")
+//            $.ajax({url : "MaterialServlet?")
         });
         
     });

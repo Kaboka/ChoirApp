@@ -21,16 +21,13 @@
                     <li><a href="main.jsp">Home</a></li>
                     <li><a href="login.jsp">LogIn</a></li>
                     <li><a href="FrontController?command=listMembers">Show Memberlist</a></li>
+                    <li><a href="FrontController?command=listMaterials">Show Materiallist</a></li>
                 </ul>
             </div>
             <div class="content-container1">
                     <div class="content">   
                         <h2>Logged in member:</h2> 
                         <p>${loggedIn.name}</p>
-                        <form>
-                            
-                            <button type="submit" value="listMaterials" name="command">List Materials</button>
-                        </form>
                     </div>
                     <div class="footer">
                         @CPH-Business, 3rd Semester, KA1

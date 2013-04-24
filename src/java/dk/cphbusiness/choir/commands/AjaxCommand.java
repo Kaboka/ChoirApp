@@ -12,18 +12,12 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class AjaxCommand{
     
-    private String data;
-    
-    public String execute(HttpServletRequest request) throws CommandException {
+    public String execute(HttpServletRequest request, String data) throws CommandException {
         if(request.getSession().getAttribute("loggedIn")==null){
             data = "Session timed out. Please log in again";
         }
         
         return data;
-    }
-    
-    public void setData(String data){
-        this.data = data;
     }
     
 }
