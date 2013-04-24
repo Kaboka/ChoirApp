@@ -5,6 +5,7 @@
 package dk.cphbusiness.choir.commands;
 
 import dk.cphbusiness.choir.contract.ChoirManager;
+import dk.cphbusiness.choir.contract.dto.MemberAuthentication;
 import dk.cphbusiness.choir.view.ChoirFactory;
 import javax.servlet.http.HttpServletRequest;
 

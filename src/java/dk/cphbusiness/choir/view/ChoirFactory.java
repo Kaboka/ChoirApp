@@ -16,7 +16,6 @@ import dk.cphbusiness.choir.commands.EditMemberCommand;
 import dk.cphbusiness.choir.commands.ListMaterialsCommand;
 import dk.cphbusiness.choir.commands.TargetCommand;
 import dk.cphbusiness.choir.contract.ChoirManager;
-import dk.cphbusiness.choir.control.DummyChoirManager;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -89,5 +88,7 @@ public class ChoirFactory {
             throw new RuntimeException(ne);
         }
     }
+
+
     
 }
