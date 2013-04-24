@@ -37,7 +37,7 @@
         <!-- Home -->
 <div data-role="page" id="page1">
     <div data-role="content">
-        <form action="FrontController?command=saveMember">
+        <form action="FrontController?command=saveMember" method="POST">
             <input type="hidden" name="id" value="${member.id}"/>
             <div data-role="fieldcontain">
                 <label for="textinput13">

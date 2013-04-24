@@ -44,23 +44,18 @@
                 <div data-role="navbar" data-iconpos="top">
                     <ul>
                         <li>
-                            <a href="FrontController?command=listMembers" data-transition="fade" data-theme="" data-icon="">
-                                List Members
-                            </a>
-                        </li>
-                        <li>
                             <a href="#page1" data-transition="fade" data-theme="" data-icon="">
                                 Log out
                             </a>
                         </li>
                         <li>
-                            <a href="FrontController?command=mobileMaterials" data-transition="fade" data-theme="" data-icon="">
-                                List Materials
+                            <a href="FrontController?command=listMembers" data-transition="fade" data-theme="" data-icon="">
+                                List Members
                             </a>
                         </li>
                         <li>
-                            <a href="#page1" data-transition="fade" data-theme="" data-icon="">
-                                Button
+                            <a href="FrontController?command=mobileMaterials" data-transition="fade" data-theme="" data-icon="">
+                                List Materials
                             </a>
                         </li>
                     </ul>

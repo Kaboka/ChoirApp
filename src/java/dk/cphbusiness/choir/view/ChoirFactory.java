@@ -45,11 +45,11 @@ public class ChoirFactory {
         commands.put("login", new LoginCommand("mobileMain.jsp"));
         commands.put("main", new TargetCommand("mobileMain.jsp"));
         commands.put("listMembers", new ListMembersCommand("mobileMemberSide.jsp"));
-        commands.put("viewMember", new ViewMemberCommand("memberView.jsp"));
+//        commands.put("viewMember", new ViewMemberCommand("memberView.jsp"));
         commands.put("editMember", new EditMemberCommand("mobileMemberEdit.jsp"));
         commands.put("saveMember", new SaveMemberCommand("mobileMemberSide.jsp"));
-        commands.put("cancelMember", new ListMembersCommand("memberList.jsp"));
-        commands.put("createMember", new CreateMemberCommand("memberEdit.jsp"));
+        commands.put("cancelMember", new ListMembersCommand("mobileMemberSide.jsp"));
+        commands.put("createMember", new CreateMemberCommand("mobileMemberEdit.jsp"));
         commands.put("listMaterials", new ListMaterialsCommand("mobileMaterials.jsp"));
         
         //AjaxCommands
