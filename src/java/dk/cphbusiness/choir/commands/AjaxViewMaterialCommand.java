@@ -13,17 +13,14 @@ import javax.servlet.http.HttpServletRequest;
 public class AjaxViewMaterialCommand extends AjaxCommand{
 
     @Override
-    public String execute(HttpServletRequest request) throws CommandException {
+    public String execute(HttpServletRequest request, String data) throws CommandException {
         ArrayList<MaterialSummary> materials = new ArrayList<MaterialSummary>(ChoirFactory.getInstance().getManager().listMaterials());
         int id = Integer.parseInt(request.getParameter("id"));
         Gson json = new Gson();
-        String material = json.toJson(materials.get(id));
-        request.setAttribute("material", material);
-        return super.execute(request);
-    }
-    
-    public void setData(String data){
-        super.setData(data);
+        data = json.toJson(materials.get(id));
+        request.setAttribute("material", data);
+        
+        return super.execute(request, data);
     }
     
     

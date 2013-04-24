@@ -1,8 +1,11 @@
 package dk.cphbusiness.choir.view;
 
 import dk.cphbusiness.choir.commands.AjaxCommand;
+import dk.cphbusiness.choir.commands.CommandException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,9 +25,11 @@ public class MaterialServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
         String commandKey = req.getParameter("command");
         AjaxCommand command = ChoirFactory.getInstance().findAjaxCommand(commandKey);
-        command.setData(commandKey);
+        
         try{
-            out.println();
+            out.println(command.execute(req, ""));
+        } catch (CommandException ex) {
+            Logger.getLogger(MaterialServlet.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
             out.close();
         }

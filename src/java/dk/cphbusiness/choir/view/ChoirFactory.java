@@ -31,7 +31,8 @@ import javax.naming.NamingException;
  */
 public class ChoirFactory {
     
-    ChoirManager manager = new DummyChoirManager();
+    ChoirManager manager = lookupChoirManagerBeanRemote();
+//    ChoirManager manager = new DummyChoirManager();
 
     private static ChoirFactory instance = null;
     private Map<String, Command> commands;
