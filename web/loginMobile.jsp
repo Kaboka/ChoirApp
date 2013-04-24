@@ -17,20 +17,31 @@
         </script>
         <!-- User-generated css -->
         <style>
-/*            .ui-page{ margin-left: 150px; margin-right: 150px}*/
+                .invalid-data { border: 1px solid red;}
         </style>
-        <!-- User-generated js -->
         
         <script>
             try {
 
     $(function() {
-
+        
+        $("form").submit(function(){
+          var validated = true;
+          $('input').each(function(){
+              if($(this).val()=== ""){
+                  if($(this).attr("rule") === "required"){
+                      $(this).addClass("invalid-data");
+                      validated = false;
+                  };
+              };
+          });
+          return validated;
+        });
     });
-
   } catch (error) {
     console.error("Your javascript has an error: " + error);
   }
+  
         </script>
     </head>
     <body>
@@ -47,15 +58,15 @@
                         <label for="userName">
                             Username
                         </label>
-                        <input name="userName" id="userName" placeholder="Username" type="text" />
+                        <input name="userName" id="userName"  rule="required" placeholder="Username" type="text"/>
                     </div>
                     <div data-role="fieldcontain" id="password">
                         <label for="password">
                             Password
                         </label>
-                        <input name="password" id="password" placeholder="Password" type="password" />
+                        <input name="password" id="password" rule="required" placeholder="Password" type="password" />
                     </div>
-                   <input type="submit" value="Log in">
+                   <input id="submitButton" type="submit" value="Log in">
                 </form>
             </div>
         </div>

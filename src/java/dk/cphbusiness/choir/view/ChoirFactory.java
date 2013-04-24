@@ -43,8 +43,8 @@ public class ChoirFactory {
         ajaxCommands = new HashMap<String, AjaxCommand>();
         
         //TargetCommands
-        commands.put("login", new LoginCommand("main.jsp"));
-        commands.put("main", new TargetCommand("main.jsp"));
+        commands.put("login", new LoginCommand("mobileMain.jsp"));
+        commands.put("main", new TargetCommand("mobileMain.jsp"));
         commands.put("listMembers", new ListMembersCommand("mobileMemberSide.jsp"));
         commands.put("viewMember", new ViewMemberCommand("memberView.jsp"));
         commands.put("editMember", new EditMemberCommand("mobileMemberEdit.jsp"));
