@@ -7,7 +7,6 @@ package dk.cphbusiness.choir.view;
 import com.google.gson.Gson;
 import dk.cphbusiness.choir.contract.ChoirManager;
 import dk.cphbusiness.choir.contract.eto.NoSuchMemberException;
-import dk.cphbusiness.choir.control.DummyChoirManager;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -29,7 +28,7 @@ public class MemberServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        ChoirManager manager = new DummyChoirManager();
+        ChoirManager manager = ChoirFactory.getInstance().getManager();
         Gson json = new Gson();
         String member = null;
         try {

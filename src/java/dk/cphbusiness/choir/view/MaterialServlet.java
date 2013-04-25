@@ -1,14 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package dk.cphbusiness.choir.view;
 
 import com.google.gson.Gson;
 import dk.cphbusiness.choir.contract.ChoirManager;
+import dk.cphbusiness.choir.contract.dto.MaterialSummary;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.ejb.EJB;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,20 +18,21 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "MaterialServlet", urlPatterns = {"/MaterialServlet"})
 public class MaterialServlet extends HttpServlet {
-    @EJB
-    private ChoirManager choirManagerBean;
+    
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-        Gson json = new Gson();
-        String materials = null;
+        int id = Integer.parseInt(req.getParameter("id"));
         
-        materials = json.toJson(choirManagerBean.listMaterials());
+        ArrayList<MaterialSummary> materials = new ArrayList<MaterialSummary>(ChoirFactory.getInstance().getManager().listMaterials());
+        Gson json = new Gson();
+        
+        String material = json.toJson(materials.get(id));
         PrintWriter out = resp.getWriter();
         
         try{
-            out.println(materials);
+            out.println(material);
         }finally{
             out.close();
         }
