@@ -40,7 +40,8 @@
                     "Filename: " + data.fileName + "<br/>" +
                     "File size: " + data.fileSize + "<br/>" +
                     "Playing time: " + data.playingTime + "<br/>" +
-                    "Pages: " + data.pageCount + "</p>");
+                    "Pages: " + data.pageCount + "<br/>" +
+                    "<a data-role='button' href='FrontController?command=editMaterial&id=" + data.id + "'>Edit</a>" + "</p>");
         }
         
         $("#selectmenu1").change(function(){
