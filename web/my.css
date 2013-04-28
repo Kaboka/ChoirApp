@@ -12,4 +12,5 @@
         margin: 0 auto !important;
         position: relative !important;
     }
+    .invalid-data { border: 1px solid red;}
 
