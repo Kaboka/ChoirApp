@@ -7,9 +7,7 @@ package dk.cphbusiness.choir.commands;
 
 import dk.cphbusiness.choir.contract.ChoirManager;
 import dk.cphbusiness.choir.contract.dto.MaterialDetail;
-import dk.cphbusiness.choir.contract.dto.MemberDetail;
 import dk.cphbusiness.choir.contract.eto.NoSuchMaterialException;
-import dk.cphbusiness.choir.contract.eto.NoSuchMemberException;
 import dk.cphbusiness.choir.view.ChoirFactory;
 import java.util.logging.Level;
 import java.util.logging.Logger;

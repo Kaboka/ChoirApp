@@ -6,7 +6,6 @@
 package dk.cphbusiness.choir.commands;
 
 import dk.cphbusiness.choir.contract.ChoirManager;
-import dk.cphbusiness.choir.contract.dto.MemberAuthentication;
 import dk.cphbusiness.choir.contract.dto.MemberDetail;
 import dk.cphbusiness.choir.contract.eto.NoSuchMemberException;
 import dk.cphbusiness.choir.view.ChoirFactory;

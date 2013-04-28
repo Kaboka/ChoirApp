@@ -71,11 +71,11 @@
                 <select id="selectmenu" name="musicId">
                     <c:forEach var="musics" items="${music}">
                         <c:choose>
-                            <c:when test="${material.musicId==music.id}">
-                                <option selected="selected" value="${music.id}">${music.title}</option>
+                            <c:when test="${material.musicId==musics.id}">
+                                <option selected="selected" value="${musics.id}">${musics.title}</option>
                             </c:when>
                             <c:otherwise>
-                                <option value="${music.id}">${music.title}</option>
+                                <option value="${musics.id}">${musics.title}</option>
                             </c:otherwise>
                         </c:choose>
                     </c:forEach>
@@ -103,7 +103,7 @@
                 <label for="textinput21">
                     Page count
                 </label>
-                <input name="pageCount" id="textinput21" placeholder="" value="$(material.pageCount)" type="text">
+                <input name="pageCount" id="textinput21" placeholder="" value="${material.pageCount}" type="text">
             </div>
             <div class="ui-grid-b">
                 <div class="ui-block-a">
