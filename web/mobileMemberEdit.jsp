@@ -37,6 +37,11 @@
         <!-- Home -->
 <div data-role="page" id="page1">
     <div data-role="content">
+        <div data-theme="a" data-role="header" data-position="fixed">
+                <h3>
+                    Create/Edit Member
+                </h3>
+            </div>
         <form action="FrontController?command=saveMember" method="POST">
             <input type="hidden" name="id" value="${member.id}"/>
             <div data-role="fieldcontain">
@@ -137,16 +142,20 @@
             </div>
             <div class="ui-grid-b">
                 <div class="ui-block-a">
-                    <input type="submit" value="Save" data-mini="true">
+                    <input type="submit" value="Save" data-mini="true" data-ajax="false">
                 </div>
                 <div class="ui-block-b">
-                    <input type="submit" value="Cancel" data-mini="true">
+                    <input type="submit" value="Cancel" data-mini="true" data-ajax="false">
                 </div>
                 <div class="ui-block-c">
-                    <input type="submit" value="Reset" data-mini="true">
+                    <input type="submit" value="Reset" data-mini="true" data-ajax="false">
                 </div>
             </div>
         </form>
+        <div data-theme="a" data-role="footer">
+                <a data-role="button" data-direction="reverse" data-transition="slide" href="FrontController?command=main" data-icon="home" data-iconpos="left" class="ui-btn-left" data-ajax="false">
+                </a>
+        </div>
     </div>
 </div>
     </body>
