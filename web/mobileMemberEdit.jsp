@@ -19,8 +19,13 @@
         </script>
         <!-- User-generated css -->
         <style>
+            #errorReport{height : 150px; 
+                         color : red;
+                         border: darkgray solid thin ;
+                         background-color: ghostwhite;
+                         border-radius: 10px;}
         </style>
-        <!-- User-generated js -->
+            
         <script>
             try {
 
@@ -46,7 +51,7 @@
                                     $(this).removeClass("invalid-data");
                                 }
                             } else if ($(this).attr("rule") === "required phone") {
-                                if (!isValidPhone($(this).val)) {
+                                if (!isValidPhone($(this).val())) {
                                     $(this).addClass("invalid-data");
                                     validated = false;
                                     $("#errorReport").append("<p>" +($(this).attr("name") + " only numeric values allowed!" + "</p>"));
