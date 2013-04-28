@@ -29,7 +29,7 @@ public class SaveMemberCommand extends TargetCommand {
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
         ChoirManager manager = ChoirFactory.getInstance().getManager();
-        
+
         long id = Long.parseLong(request.getParameter("id"));
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
@@ -55,14 +55,27 @@ public class SaveMemberCommand extends TargetCommand {
         }
         MemberDetail member = new MemberDetail(id, firstName, lastName, title, false, false, dateOfBirth, voiceCode, roleCodes, street, zipCode, city, email, phone);
         try {
-            member = manager.saveMember((MemberAuthentication) request.getSession().getAttribute("loggedin"), member);
+            System.out.println(id);
+            System.out.println(firstName);
+            System.out.println(lastName);
+            System.out.println(title);
+            System.out.println(dateOfBirth);
+            System.out.println(voiceCode);
+            System.out.println(roleCodes);
+            System.out.println(street);
+            System.out.println(zipCode);
+            System.out.println(city);
+            System.out.println(email);
+            System.out.println(phone);
+            manager.saveMember((MemberAuthentication) request.getSession().getAttribute("loggedIn"), member);
+            request.setAttribute("members",manager.listMembers());
+            request.setAttribute("roles", manager.listRoles());
+            request.setAttribute("voices", manager.listVoices());
         } catch (NoSuchMemberException ex) {
             throw new CommandException("Saving failed", ex.getMessage(), ex);
         } catch (AuthenticationException ex) {
             Logger.getLogger(SaveMemberCommand.class.getName()).log(Level.SEVERE, null, ex);
         } 
-        request.getSession().setAttribute("member", member);
-        
         return super.execute(request);
     }
 }

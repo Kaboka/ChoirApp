@@ -27,26 +27,27 @@
 
                 $(function() {
                     var id;
-                    $(".memberList").on("expand",function(){
+                    $(".memberList").on("expand", function() {
                         id = $(this).data('record');
                         console.log(id);
                         alert("id" + id);
-                        $.ajax({url: "MemberServlet?id=" + id  , cache: false, dataType: "json", success : dataReady});
+                        $.ajax({url: "MemberServlet?id=" + id, cache: false, dataType: "json", success: dataReady});
                     });
-                    function dataReady(data){
+                    function dataReady(data) {
                         alert(JSON.stringify(data));
                         $("#" + id).html("<li> Date of Birth:" + data.dateOfBirth + "</li>");
                         $("#" + id).append("<li> Voice:" + data.voice.name + "</li>");
-                        $("#" + id).append("<li> Roles:" + data.roles.name + "</li>");                        
+                        $("#" + id).append("<li> Roles:" + data.roles.name + "</li>");
                         $("#" + id).append("<li> Street:" + data.street + "</li>");
                         $("#" + id).append("<li> Zipcode:" + data.zipCode + "</li>");
                         $("#" + id).append("<li> City:" + data.city + "</li>");
-                        $("#" + id).append("<li> Email:<a href=':mailto'" + data.email + "rel='external'>"+ data.email + "</a></li>");
-                        $("#" + id).append("<li> Phone: <a href=':tel'" + data.phone + "rel='external'>"+ data.phone + "</a></li>");
- //                       $("#" + id).append("<form><input type=\"hidden\" name=\"id\" value=\"" + id + "\"/><button type=\"submit\" name=\"command\" value=\"editMember\">Edit</button></form>");
+                        $("#" + id).append("<li> Email:<a href=':mailto'" + data.email + "rel='external'>" + data.email + "</a></li>");
+                        $("#" + id).append("<li> Phone: <a href=':tel'" + data.phone + "rel='external'>" + data.phone + "</a></li>");
+                        //                       $("#" + id).append("<form><input type=\"hidden\" name=\"id\" value=\"" + id + "\"/><button type=\"submit\" name=\"command\" value=\"editMember\">Edit</button></form>");
                         $("#" + id).append("<a data-role='button' href='FrontController?command=editMember&id=" + id + "'>Edit</a>");
-                    };
-                    $("selectmenu1").change(function(){
+                    }
+                    ;
+                    $("selectmenu1").change(function() {
                         alert(this.id);
                     });
                 });
@@ -59,36 +60,57 @@
     <body>
         <!-- Home -->
         <div data-role="page" id="page1">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    Header
+                </h3>
+            </div>
+            <div data-role="content">
+                <div data-role="navbar" data-iconpos="top">
+                    <ul>
+                        <li>
+                            <a href="FrontController?command=main" data-transition="fade" data-theme="" data-icon="">
+                                Main page
+                            </a>
+                        </li>
+                        <li>
+                            <a href="FrontController?command=createMember" data-transition="fade" data-theme="" data-icon="">
+                                Create Member
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
             <div data-role="fieldcontain">
-            <label for="selectmenu1">
-                Sort by voice
-            </label>
-            <select id="selectmenu1" name="">
-                <option id="default">
-                    default
-                </option>
-            <c:forEach var="voice" items="${voices}">
-                <option data-code="${voice.code}">
-                    ${voice.name}
-                </option>
-            </c:forEach>
-            </select>
-        </div>
-        <div data-role="fieldcontain">
-            <label for="selectmenu2">
-                Sort by role
-            </label>
-            <select id="selectmenu2" name="">
-                <option value="default">
-                    default
-                </option>
-            <c:forEach var="role" items="${roles}">
-                <option value="${role.code}">
-                    ${role.name}
-                </option>
-            </c:forEach>
-            </select>
-        </div>
+                <label for="selectmenu1">
+                    Sort by voice
+                </label>
+                <select id="selectmenu1" name="">
+                    <option id="default">
+                        default
+                    </option>
+                    <c:forEach var="voice" items="${voices}">
+                        <option data-code="${voice.code}">
+                            ${voice.name}
+                        </option>
+                    </c:forEach>
+                </select>
+            </div>
+            <div data-role="fieldcontain">
+                <label for="selectmenu2">
+                    Sort by role
+                </label>
+                <select id="selectmenu2" name="">
+                    <option value="default">
+                        default
+                    </option>
+                    <c:forEach var="role" items="${roles}">
+                        <option value="${role.code}">
+                            ${role.name}
+                        </option>
+                    </c:forEach>
+                </select>
+            </div>
             <div data-role="content">
                 <div data-role="collapsible-set" data-inset="false">
                     <c:forEach var="member" items="${members}">
@@ -97,7 +119,7 @@
                                 <c:out value="${member.name}"></c:out>
                                 </h3>
                                 <ul id="${member.id}"  data-role='listview' data-inset='false'></ul>
-                            </div>
+                        </div>
                     </c:forEach>
                 </div>
             </div>

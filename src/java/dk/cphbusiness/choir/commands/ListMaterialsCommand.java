@@ -18,6 +18,7 @@ public class ListMaterialsCommand extends TargetCommand{
     public String execute(HttpServletRequest request) throws CommandException {
         ChoirManager manager = ChoirFactory.getInstance().getManager();
         request.setAttribute("materials", manager.listMaterials());
+        request.setAttribute("voices", manager.listVoices());
         
         return super.execute(request);
     }

@@ -22,21 +22,30 @@
         <!-- User-generated js -->
         <script>
             try {
+                
+                
     $(function() {
+        
         $("li").click(function(){
             var id = $(this).data("record");
-            $.ajax({ url : "MaterialServlet?id=" + id,
+            $.ajax({ url : "MaterialServlet?id="+id+"&command=ajaxViewMaterial",
                     cache : false,
                     dataType : "json",
-                    success : dataReady});
+                    success : materialReady});
         });
         
-        function dataReady(data){
+        function materialReady(data){
             $("#detail").html("<h3>" + data.title + "</h3>" +
                     "<p>Type: " + data.type + "<br/>" +
                     "Description: " + data.description + "<br/>" +
                     "Music Description: " + data.musicDescription + "</p>");
         }
+        
+        $("#selectmenu1").change(function(){
+            var id = $(this).find(":selected").data("record");
+//            $.ajax({url : "MaterialServlet?")
+        });
+        
     });
 
   } catch (error) {
@@ -54,7 +63,23 @@
                     Materials
                 </h3>
             </div>
+            
             <div data-role="content">
+            <div data-role="fieldcontain">
+            <label for="selectmenu1">
+                Voices:
+            </label>
+            <select id="selectmenu1" name="">
+                <c:forEach var="voice" items="${voices}">
+                    <option value="${voice.code}" data-record="${voice.code}">
+                        <c:out value="${voice.name}"></c:out>
+                    </option>
+                </c:forEach>
+                
+            </select>
+            </div>
+            
+            
                 <ul class="materialList" data-role="listview" data-divider-theme="b" data-inset="true" data-filter="true">
                     <li data-role="list-divider" role="heading">
                         Materials
@@ -68,6 +93,8 @@
                     </c:forEach>
                 </ul>
             </div>
+            
+            
             <div data-theme="a" data-role="footer" data-position="fixed">
                 <h3 class="footer">
                     Choir
@@ -89,9 +116,8 @@
                 
             </div>
             <div data-theme="a" data-role="footer" data-position="fixed">
-                <h3 class="footer">
-                    Choir
-                </h3>
+                <a data-role="button" data-direction="reverse" data-transition="slide" href="#page1" data-icon="home" data-iconpos="left" class="ui-btn-left">
+                </a>
             </div>
         </div>
     </body>
