@@ -60,21 +60,17 @@
     <body>
         <!-- Home -->
         <div data-role="page" id="page1">
-            <div data-theme="a" data-role="header">
+            <div data-theme="a" data-role="header" data-position="fixed">
+                <a data-role="button" data-direction="reverse" data-transition="slide" href="FrontController?command=main" data-icon="home" data-iconpos="right" class="ui-btn-left" data-ajax="false"></a>
                 <h3>
-                    Header
+                    Members
                 </h3>
             </div>
             <div data-role="content">
                 <div data-role="navbar" data-iconpos="top">
                     <ul>
                         <li>
-                            <a href="FrontController?command=main" data-transition="fade" data-theme="" data-icon="">
-                                Main page
-                            </a>
-                        </li>
-                        <li>
-                            <a href="FrontController?command=createMember" data-transition="fade" data-theme="" data-icon="">
+                            <a href="FrontController?command=createMember" data-transition="fade" data-theme="" data-icon="plus" data-ajax="false" data-iconpos="left">
                                 Create Member
                             </a>
                         </li>
@@ -122,6 +118,9 @@
                         </div>
                     </c:forEach>
                 </div>
+                <div data-theme="a" data-role="footer" data-position="fixed">
+                    ChoirApp
+            </div>
             </div>
         </div>
     </body>

@@ -844,9 +844,6 @@ exists or setup the property manually. For example like this:
         <ant antfile="${project.ChoirContract}/build.xml" inheritall="false" target="jar">
             <property name="deploy.on.save" value="false"/>
         </ant>
-        <ant antfile="${project.ChoirDummy}/build.xml" inheritall="false" target="jar">
-            <property name="deploy.on.save" value="false"/>
-        </ant>
     </target>
     <target depends="init" if="dist.ear.dir" name="deps-ear-jar" unless="no.deps">
         <ant antfile="${project.ChoirContract}/build.xml" inheritall="false" target="jar">

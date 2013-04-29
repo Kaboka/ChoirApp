@@ -29,7 +29,8 @@ public class SaveMemberCommand extends TargetCommand {
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
         ChoirManager manager = ChoirFactory.getInstance().getManager();
-
+    if(request.getParameter("id") != null){
+        
         long id = Long.parseLong(request.getParameter("id"));
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
@@ -76,6 +77,7 @@ public class SaveMemberCommand extends TargetCommand {
         } catch (AuthenticationException ex) {
             Logger.getLogger(SaveMemberCommand.class.getName()).log(Level.SEVERE, null, ex);
         } 
+    }
         return super.execute(request);
     }
 }
