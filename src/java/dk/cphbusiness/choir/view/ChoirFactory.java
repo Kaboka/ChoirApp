@@ -52,6 +52,7 @@ public class ChoirFactory {
         commands.put("cancelMember", new ListMembersCommand("mobileMemberSide.jsp"));
         commands.put("createMember", new CreateMemberCommand("mobileMemberEdit.jsp"));
         commands.put("listMaterials", new ListMaterialsCommand("mobileMaterials.jsp"));
+        commands.put("searchArtist", new TargetCommand("mobileArtist.jsp"));
         
         //AjaxCommands
         ajaxCommands.put("ajaxViewMaterial", new AjaxViewMaterialCommand());
