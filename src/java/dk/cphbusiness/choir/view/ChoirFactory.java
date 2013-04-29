@@ -13,6 +13,7 @@ import dk.cphbusiness.choir.commands.CreateMemberCommand;
 import dk.cphbusiness.choir.commands.LoginCommand;
 import dk.cphbusiness.choir.commands.Command;
 import dk.cphbusiness.choir.commands.CreateMaterialCommand;
+import dk.cphbusiness.choir.commands.EditArtistCommand;
 import dk.cphbusiness.choir.commands.EditMaterialCommand;
 import dk.cphbusiness.choir.commands.ListMembersCommand;
 import dk.cphbusiness.choir.commands.SaveMemberCommand;
