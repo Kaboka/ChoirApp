@@ -5,15 +5,17 @@
 package dk.cphbusiness.choir.view;
 
 import dk.cphbusiness.choir.commands.AjaxCommand;
+import dk.cphbusiness.choir.commands.AjaxListMaterialsByVoiceCommand;
 import dk.cphbusiness.choir.commands.AjaxViewMaterialCommand;
 import dk.cphbusiness.choir.commands.CreateMemberCommand;
 import dk.cphbusiness.choir.commands.LoginCommand;
 import dk.cphbusiness.choir.commands.Command;
+import dk.cphbusiness.choir.commands.EditMaterialCommand;
 import dk.cphbusiness.choir.commands.ListMembersCommand;
 import dk.cphbusiness.choir.commands.SaveMemberCommand;
-import dk.cphbusiness.choir.commands.ViewMemberCommand;
 import dk.cphbusiness.choir.commands.EditMemberCommand;
 import dk.cphbusiness.choir.commands.ListMaterialsCommand;
+import dk.cphbusiness.choir.commands.SaveMaterialCommand;
 import dk.cphbusiness.choir.commands.TargetCommand;
 import dk.cphbusiness.choir.contract.ChoirManager;
 import java.util.HashMap;
@@ -47,7 +49,9 @@ public class ChoirFactory {
         commands.put("main", new TargetCommand("mobileMain.jsp"));
         commands.put("listMembers", new ListMembersCommand("mobileMemberSide.jsp"));
 //        commands.put("viewMember", new ViewMemberCommand("memberView.jsp"));
+        commands.put("editMaterial", new EditMaterialCommand("mobileMaterialEdit.jsp"));
         commands.put("editMember", new EditMemberCommand("mobileMemberEdit.jsp"));
+        commands.put("saveMaterial", new SaveMaterialCommand("mobileMaterials.jsp"));
         commands.put("saveMember", new SaveMemberCommand("mobileMemberSide.jsp"));
         commands.put("cancelMember", new ListMembersCommand("mobileMemberSide.jsp"));
         commands.put("createMember", new CreateMemberCommand("mobileMemberEdit.jsp"));
@@ -56,6 +60,7 @@ public class ChoirFactory {
         
         //AjaxCommands
         ajaxCommands.put("ajaxViewMaterial", new AjaxViewMaterialCommand());
+        ajaxCommands.put("ajaxListMaterialsByVoices", new AjaxListMaterialsByVoiceCommand());
     }
 
     public static ChoirFactory getInstance() {

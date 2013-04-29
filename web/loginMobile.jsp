@@ -35,6 +35,7 @@
                   };
               };
           });
+          
           return validated;
         });
     });
@@ -47,7 +48,7 @@
     <body>
         <!-- Home -->
         <div data-role="page" id="page1" >
-            <div data-theme="" data-role="header">
+            <div data-theme="" data-role="header" data-position="fixed">
                 <h3>
                     Log in
                 </h3>
@@ -68,6 +69,9 @@
                     </div>
                    <input id="submitButton" type="submit" value="Log in">
                 </form>
+                <div data-theme="a" data-role="footer" data-position="fixed">
+                    ChoirApp
+                </div>
             </div>
         </div>
     </body>

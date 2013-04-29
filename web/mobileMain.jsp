@@ -35,41 +35,31 @@
     <body>
         <!-- Home -->
         <div data-role="page" id="page1">
-            <div data-theme="a" data-role="header">
+            <div data-theme="a" data-role="header" data-position="fixed">
                 <h3>
-                    Header
+                    Main
                 </h3>
             </div>
             <div data-role="content">
                 <div data-role="navbar" data-iconpos="top">
                     <ul>
                         <li>
-                            <a href="#page1" data-transition="fade" data-theme="" data-icon="">
-                                Log out
-                            </a>
-                        </li>
-                        <li>
-                            <a href="FrontController?command=listMembers" data-transition="fade" data-theme="" data-icon="">
+                            <a href="FrontController?command=listMembers" data-transition="fade" data-theme="c" data-icon="" data-ajax="false">
                                 List Members
                             </a>
                         </li>
                         <li>
-                            <a href="FrontController?command=mobileMaterials" data-transition="fade" data-theme="" data-icon="">
+                            <a href="FrontController?command=listMaterials" data-transition="fade" data-theme="c" data-icon="" data-ajax="false">
                                 List Materials
-                            </a>
-                        </li>
-                        <li>
-                            <a href="FrontController?command=searchArtists" data-transition="fade" data-theme="" data-icon="">
-                                Search Artists
                             </a>
                         </li>
                     </ul>
                 </div>
             </div>
             <div data-theme="a" data-role="footer" data-position="fixed">
-                <h3>
-                    Footer
-                </h3>
+                <a href="FrontController?command=login" class="ui-btn-right" data-transition="fade" data-theme="c" data-icon="" data-ajax="false">
+                    Log out
+                </a>
             </div>
         </div>
     </body>
