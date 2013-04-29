@@ -43,8 +43,24 @@
         
         $("#selectmenu1").change(function(){
             var id = $(this).find(":selected").data("record");
-//            $.ajax({url : "MaterialServlet?")
+            $.ajax({url : "MaterialServlet?voiceCode="+id+"&command=ajaxListMaterialsByVoices",
+                    cache : false,
+                    dataType : "json",
+                    success : materialsByVoicesList});
         });
+        
+        function materialsByVoicesList(data){
+            $(".materialList").html("<li data-role='list-divider' role='heading'>"+
+                        "Materials"+
+                    "</li>"+
+                    "<c:forEach var='material' items='"+data+"'>"+
+                    "<li data-theme='c' data-record='${material.id}'>"+
+                        "<a href='#details' data-transition='slide'>"+
+                            "<c:out value='${material.title}'></c:out>"+
+                        "</a>"+
+                    "</li>"+
+                    "</c:forEach>");
+        }
         
     });
 

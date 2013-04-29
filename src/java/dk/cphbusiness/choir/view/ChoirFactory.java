@@ -5,13 +5,13 @@
 package dk.cphbusiness.choir.view;
 
 import dk.cphbusiness.choir.commands.AjaxCommand;
+import dk.cphbusiness.choir.commands.AjaxListMaterialsByVoiceCommand;
 import dk.cphbusiness.choir.commands.AjaxViewMaterialCommand;
 import dk.cphbusiness.choir.commands.CreateMemberCommand;
 import dk.cphbusiness.choir.commands.LoginCommand;
 import dk.cphbusiness.choir.commands.Command;
 import dk.cphbusiness.choir.commands.ListMembersCommand;
 import dk.cphbusiness.choir.commands.SaveMemberCommand;
-import dk.cphbusiness.choir.commands.ViewMemberCommand;
 import dk.cphbusiness.choir.commands.EditMemberCommand;
 import dk.cphbusiness.choir.commands.ListMaterialsCommand;
 import dk.cphbusiness.choir.commands.TargetCommand;
@@ -55,6 +55,7 @@ public class ChoirFactory {
         
         //AjaxCommands
         ajaxCommands.put("ajaxViewMaterial", new AjaxViewMaterialCommand());
+        ajaxCommands.put("ajaxListMaterialsByVoices", new AjaxListMaterialsByVoiceCommand());
     }
 
     public static ChoirFactory getInstance() {
