@@ -26,7 +26,7 @@
       
       select: function( event, ui ) {
         log( ui.item ?
-          "<p>" + "Name: " + ui.item.label + "</p>" + "<p><a href=" + ui.item.wikiURL +">" + "WikiURL</a></p>" + "<a data-role='button' href='FrontController?command=editArtist&id='+ui.item.id>Edit</a>":
+          "<p>" + "Name: " + ui.item.label + "</p>" + "<p><a href=" + ui.item.wikiURL +">" + "WikiURL</a></p>" + "<a data-role='button' href='FrontController?command=editArtist&id="+ui.item.id+"'>Edit</a>":
           "Nothing selected, input was " + this.value );
       }
     });

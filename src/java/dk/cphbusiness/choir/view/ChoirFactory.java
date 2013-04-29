@@ -18,6 +18,7 @@ import dk.cphbusiness.choir.commands.ListMembersCommand;
 import dk.cphbusiness.choir.commands.SaveMemberCommand;
 import dk.cphbusiness.choir.commands.EditMemberCommand;
 import dk.cphbusiness.choir.commands.ListMaterialsCommand;
+import dk.cphbusiness.choir.commands.SaveArtistCommand;
 import dk.cphbusiness.choir.commands.SaveMaterialCommand;
 import dk.cphbusiness.choir.commands.TargetCommand;
 import dk.cphbusiness.choir.contract.ChoirManager;
@@ -60,6 +61,8 @@ public class ChoirFactory {
         commands.put("createMember", new CreateMemberCommand("mobileMemberEdit.jsp"));
         commands.put("listMaterials", new ListMaterialsCommand("mobileMaterials.jsp"));
         commands.put("searchArtists", new TargetCommand("mobileArtist.jsp"));
+        commands.put("editArtist", new EditArtistCommand("artistEdit.jsp"));
+        commands.put("saveArtist", new SaveArtistCommand("mobileMain.jsp"));
         
         //AjaxCommands
         ajaxCommands.put("ajaxViewMaterial", new AjaxViewMaterialCommand());
