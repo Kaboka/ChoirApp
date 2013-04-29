@@ -32,7 +32,7 @@ public class EditArtistCommand extends TargetCommand{
         } catch (NoSuchArtistException nsme) {
             Logger.getLogger(EditArtistCommand.class.getName()).log(Level.SEVERE, null, nsme);
             throw new CommandException(
-            "Edit Member Command",
+            "Edit Artist Command",
             nsme.getMessage()+" id: "+nsme.getId(), nsme);
         }  
         return super.execute(request);

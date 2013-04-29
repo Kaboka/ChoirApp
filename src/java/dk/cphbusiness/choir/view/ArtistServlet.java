@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ArtistServlet extends HttpServlet {
 
     private String singleArtist(ArtistSummary artist) {
-        return "{ \"label\": \""+artist.getName()+"\", \"value\": \""+artist.getName()+"\", \"wikiURL\": \""+artist.getWikiUrl()+"\" }";
+        return "{ \"label\": \""+artist.getName()+"\", \"value\": \""+artist.getName()+"\", \"wikiURL\": \""+artist.getWikiUrl()+"\", \"id\": \""+artist.getId()+"\" }";
     }
     
     @Override
