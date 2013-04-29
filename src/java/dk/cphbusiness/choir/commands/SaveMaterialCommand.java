@@ -29,13 +29,18 @@ public class SaveMaterialCommand extends TargetCommand {
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
         ChoirManager manager = ChoirFactory.getInstance().getManager();
-
+    if(request.getParameter("id") != null){
         long id = Long.parseLong(request.getParameter("id"));
         String title = request.getParameter("title");
         String fileName = request.getParameter("fileName");
         int fileSize = Integer.parseInt(request.getParameter("fileSize"));
-        int playingTime = Integer.parseInt(request.getParameter("playingTime"));
-        int pageCount = Integer.parseInt(request.getParameter("pageCount"));
+        int pageCount = 0;
+        int playingTime = 0;
+        if("sheet".equals(request.getParameter("type"))){
+            pageCount = Integer.parseInt(request.getParameter("pageCount"));
+        }else{
+            playingTime = Integer.parseInt(request.getParameter("playingTime"));
+        }
         long musicId = Long.parseLong(request.getParameter("musicId"));
         MusicDetail musicD = null;
         try {
@@ -61,20 +66,24 @@ public class SaveMaterialCommand extends TargetCommand {
             System.out.println(id);
             System.out.println(title);
             System.out.println(musicId);
-            System.out.println(voices);
+            for(VoiceSummary voice : materialVoices){
+                System.out.println(voice.getName());
+            }
             System.out.println(fileName);
             System.out.println(fileSize);
             System.out.println(playingTime);
             System.out.println(pageCount);
             manager.saveMaterial((MemberAuthentication) request.getSession().getAttribute("loggedIn"), material);
-            request.setAttribute("materials", manager.listMaterials());
-            request.setAttribute("music", manager.listMusic());
-            request.setAttribute("voices", manager.listVoices());
+
         } catch (NoSuchMaterialException ex) {
             throw new CommandException("Saving failed", ex.getMessage(), ex);
         } catch (AuthenticationException ex) {
             Logger.getLogger(SaveMaterialCommand.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+        request.setAttribute("materials", manager.listMaterials());
+        request.setAttribute("music", manager.listMusic());
+        request.setAttribute("voices", manager.listVoices());
         return super.execute(request);
     }
 }
