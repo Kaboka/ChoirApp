@@ -16,12 +16,14 @@ public class AjaxViewMaterialCommand extends AjaxCommand{
 
     @Override
     public String execute(HttpServletRequest request, String data) throws CommandException {
+        MaterialDetail material = null;
         try {
-            MaterialDetail material = ChoirFactory.getInstance().getManager().findMaterial(Long.parseLong(request.getParameter("id")));
+            material = ChoirFactory.getInstance().getManager().findMaterial(Long.parseLong(request.getParameter("id")));
             int id = Integer.parseInt(request.getParameter("id"));
             Gson json = new Gson();
             data = json.toJson(material);
             request.setAttribute("material", data);
+            
         } catch (NoSuchMaterialException ex) {
             Logger.getLogger(AjaxViewMaterialCommand.class.getName()).log(Level.SEVERE, null, ex);
         }

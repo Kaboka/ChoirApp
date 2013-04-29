@@ -35,18 +35,32 @@
         });
         
         function materialReady(data){
-            $("#detail").html("<h3>" + data.title + "</h3><br/>" +
-                    "<div>Voices: <c:forEach var='voice' items='${data.voices}'><c:out value='${voice.name}'></c:out><br></c:forEach></div><br/>" +
-                    "Filename: " + data.fileName + "<br/>" +
-                    "File size: " + data.fileSize + "<br/>" +
-                    "Playing time: " + data.playingTime + "<br/>" +
-                    "Pages: " + data.pageCount + "</p>");
+            $("#detail").html("<h3>" + data.title + "</h3>" +
+                    "<p>Type: " + data.type + "<br/>" +
+                    "Description: " + data.description + "<br/>" +
+                    "Music Description: " + data.musicDescription + "</p>");
         }
         
         $("#selectmenu1").change(function(){
             var id = $(this).find(":selected").data("record");
-//            $.ajax({url : "MaterialServlet?")
+            $.ajax({url : "MaterialServlet?voiceCode="+id+"&command=ajaxListMaterialsByVoices",
+                    cache : false,
+                    dataType : "json",
+                    success : materialsByVoicesList});
         });
+        
+        function materialsByVoicesList(data){
+            $(".materialList").html("<li data-role='list-divider' role='heading'>"+
+                        "Materials"+
+                    "</li>"+
+                    "<c:forEach var='material' items='"+data+"'>"+
+                    "<li data-theme='c' data-record='${material.id}'>"+
+                        "<a href='#details' data-transition='slide'>"+
+                            "<c:out value='${material.title}'></c:out>"+
+                        "</a>"+
+                    "</li>"+
+                    "</c:forEach>");
+        }
         
     });
 
@@ -60,7 +74,7 @@
         
         <!-- HOME -->
         <div data-role="page" id="page1">
-            <div data-theme="a" data-role="header" data-position="fixed">
+            <div data-theme="a" data-role="header">
                 <h3 class="header">
                     Materials
                 </h3>
@@ -107,7 +121,7 @@
         <!-- PAGE FOR MATERIAL DETAILS -->
         <div data-role="page" id="details">
             <div data-theme="a" data-role="header">
-                <a data-role="button" data-direction="reverse" data-transition="slide" href="#page1" data-icon="arrow-l" data-iconpos="left" class="ui-btn-left" data-ajax="false">
+                <a data-role="button" data-direction="reverse" data-transition="slide" href="#page1" data-icon="arrow-l" data-iconpos="left" class="ui-btn-left">
                     Materials
                 </a>
                 <h3 class="header">
@@ -118,7 +132,7 @@
                 
             </div>
             <div data-theme="a" data-role="footer" data-position="fixed">
-                <a data-role="button" data-direction="reverse" data-transition="slide" href="#page1" data-icon="home" data-iconpos="left" class="ui-btn-left" data-ajax="false">
+                <a data-role="button" data-direction="reverse" data-transition="slide" href="#page1" data-icon="home" data-iconpos="left" class="ui-btn-left">
                 </a>
             </div>
         </div>
