@@ -22,7 +22,7 @@
       
     }
     $( "#artists" ).autocomplete({
-      source: "ArtistServlet",
+      source: "AjaxServlet?command=ajaxListArtistsByPattern",
       
       select: function( event, ui ) {
         log( ui.item ?
