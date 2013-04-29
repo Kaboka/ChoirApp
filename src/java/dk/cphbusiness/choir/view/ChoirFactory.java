@@ -5,6 +5,8 @@
 package dk.cphbusiness.choir.view;
 
 import dk.cphbusiness.choir.commands.AjaxCommand;
+import dk.cphbusiness.choir.commands.AjaxFindMemberCommand;
+import dk.cphbusiness.choir.commands.AjaxListArtistsByPatternCommand;
 import dk.cphbusiness.choir.commands.AjaxListMaterialsByVoiceCommand;
 import dk.cphbusiness.choir.commands.AjaxViewMaterialCommand;
 import dk.cphbusiness.choir.commands.CreateMemberCommand;
@@ -56,10 +58,13 @@ public class ChoirFactory {
         commands.put("cancelMember", new ListMembersCommand("mobileMemberSide.jsp"));
         commands.put("createMember", new CreateMemberCommand("mobileMemberEdit.jsp"));
         commands.put("listMaterials", new ListMaterialsCommand("mobileMaterials.jsp"));
+        commands.put("searchArtists", new TargetCommand("mobileArtist.jsp"));
         
         //AjaxCommands
         ajaxCommands.put("ajaxViewMaterial", new AjaxViewMaterialCommand());
         ajaxCommands.put("ajaxListMaterialsByVoices", new AjaxListMaterialsByVoiceCommand());
+        ajaxCommands.put("ajaxListArtistsByPattern", new AjaxListArtistsByPatternCommand());
+        ajaxCommands.put("ajaxFindMember", new AjaxFindMemberCommand());
     }
 
     public static ChoirFactory getInstance() {

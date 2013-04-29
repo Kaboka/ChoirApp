@@ -53,6 +53,11 @@
                                 List Materials
                             </a>
                         </li>
+                        <li>
+                            <a href="FrontController?command=searchArtists" data-transition="fade" data-theme="c" data-icon="" data-ajax="false">
+                                Search Artists
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

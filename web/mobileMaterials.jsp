@@ -28,7 +28,7 @@
         
         $("li").click(function(){
             var id = $(this).data("record");
-            $.ajax({ url : "MaterialServlet?id="+id+"&command=ajaxViewMaterial",
+            $.ajax({ url : "AjaxServlet?id="+id+"&command=ajaxViewMaterial",
                     cache : false,
                     dataType : "json",
                     success : materialReady});
@@ -47,18 +47,19 @@
         
         $("#selectmenu1").change(function(){
             var id = $(this).find(":selected").data("record");
-            $.ajax({url : "MaterialServlet?voiceCode="+id+"&command=ajaxListMaterialsByVoices",
+            $.ajax({url : "AjaxServlet?voiceCode="+id+"&command=ajaxListMaterialsByVoices",
                     cache : false,
                     dataType : "json",
                     success : materialsByVoicesList});
         });
         
         function materialsByVoicesList(data){
-            $(".materialList").html("<li data-role='list-divider' role='heading'>"+
+            $(".materialList").empty();
+            $(".materialList").html("<li data-role='list-divider' role='heading' id='heading'>"+
                     "Materials"+
                     "</li>");
             for(var i = 0; i < data.length; i++){
-                $(".materialList").append("<li data-theme='c' data-record="+data[i].id+">"+
+                $("#heading").append("<li data-theme='c' data-record="+data[i].id+">"+
                     "<a href='#details' data-transition='slide'>"+
                     data[i].title+
                     "</a>"+
@@ -101,7 +102,7 @@
             
             
                 <ul class="materialList" data-role="listview" data-divider-theme="b" data-inset="true" data-filter="true">
-                    <li data-role="list-divider" role="heading">
+                    <li data-role="list-divider" role="heading" id="heading">
                         Materials
                     </li>
                     <c:forEach var="material" items="${materials}">

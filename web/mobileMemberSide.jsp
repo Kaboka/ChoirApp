@@ -31,7 +31,7 @@
                         id = $(this).data('record');
                         console.log(id);
                         alert("id" + id);
-                        $.ajax({url: "MemberServlet?id=" + id, cache: false, dataType: "json", success: dataReady});
+                        $.ajax({url: "AjaxServlet?id=" + id + "&command=ajaxFindMember", cache: false, dataType: "json", success: dataReady});
                     });
                     function dataReady(data) {
                         alert(JSON.stringify(data));
