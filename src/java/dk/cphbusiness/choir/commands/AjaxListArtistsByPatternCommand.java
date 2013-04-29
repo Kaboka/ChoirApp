@@ -2,36 +2,24 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package dk.cphbusiness.choir.view;
+package dk.cphbusiness.choir.commands;
 
-import com.google.gson.Gson;
 import dk.cphbusiness.choir.contract.ChoirManager;
 import dk.cphbusiness.choir.contract.dto.ArtistSummary;
-import java.io.IOException;
-import java.io.PrintWriter;
+import dk.cphbusiness.choir.view.AjaxServlet;
+import dk.cphbusiness.choir.view.ChoirFactory;
 import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Nicklas Hemmingsen
- */
-@WebServlet(name = "ArtistServlet", urlPatterns = {"/ArtistServlet"})
-public class ArtistServlet extends HttpServlet {
-
+public class AjaxListArtistsByPatternCommand extends AjaxCommand{
+    
     private String singleArtist(ArtistSummary artist) {
         return "{ \"label\": \""+artist.getName()+"\", \"value\": \""+artist.getName()+"\", \"wikiURL\": \""+artist.getWikiUrl()+"\" }";
     }
     
-    @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    public String execute(HttpServletRequest request, String data) throws CommandException {
         ChoirManager manager = ChoirFactory.getInstance().getManager();
         String artists = null;
         try {
@@ -44,15 +32,10 @@ public class ArtistServlet extends HttpServlet {
             System.err.println("term: "+request.getParameter("term"));
             System.err.println("artists: "+artists);
         } catch (Exception ex) {
-            Logger.getLogger(MemberServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AjaxServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-            /* TODO output your page here. You may use following sample code. */
-            out.println(artists);
-        } finally {
-            out.close();
-        }
+        
+        return super.execute(request, artists);
     }
+    
 }
