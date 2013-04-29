@@ -35,11 +35,15 @@
         });
         
         function materialReady(data){
-            $("#detail").html("<h3>" + data.title + "</h3>" +
-                    "<p>Type: " + data.type + "<br/>" +
-                    "Description: " + data.description + "<br/>" +
-                    "Music Description: " + data.musicDescription + "</p>");
+            $("#detail").html("<h3>" + data.title + "</h3><br/>" +
+                    "<div>Voices: <c:forEach var='voice' items='${data.voices}'><c:out value='${voice.name}'></c:out><br></c:forEach></div><br/>" +
+                    "Filename: " + data.fileName + "<br/>" +
+                    "File size: " + data.fileSize + "<br/>" +
+                    "Playing time: " + data.playingTime + "<br/>" +
+                    "Pages: " + data.pageCount + "<br/>" +
+                    "<a data-role='button' href='FrontController?command=editMaterial&id=" + data.id + "'>Edit</a>" + "</p>");
         }
+
         
         $("#selectmenu1").change(function(){
             var id = $(this).find(":selected").data("record");
@@ -51,15 +55,15 @@
         
         function materialsByVoicesList(data){
             $(".materialList").html("<li data-role='list-divider' role='heading'>"+
-                        "Materials"+
-                    "</li>"+
-                    "<c:forEach var='material' items='"+data+"'>"+
-                    "<li data-theme='c' data-record='${material.id}'>"+
-                        "<a href='#details' data-transition='slide'>"+
-                            "<c:out value='${material.title}'></c:out>"+
-                        "</a>"+
-                    "</li>"+
-                    "</c:forEach>");
+                    "Materials"+
+                    "</li>");
+            for(var i = 0; i < data.length; i++){
+                $(".materialList").append("<li data-theme='c' data-record="+data[i].id+">"+
+                    "<a href='#details' data-transition='slide'>"+
+                    data[i].title+
+                    "</a>"+
+                    "</li>");
+            }
         }
         
     });

@@ -44,12 +44,12 @@
                 <div data-role="navbar" data-iconpos="top">
                     <ul>
                         <li>
-                            <a href="FrontController?command=listMembers" data-transition="fade" data-theme="" data-icon="" data-ajax="false">
+                            <a href="FrontController?command=listMembers" data-transition="fade" data-theme="c" data-icon="" data-ajax="false">
                                 List Members
                             </a>
                         </li>
                         <li>
-                            <a href="FrontController?command=listMaterials" data-transition="fade" data-theme="" data-icon="" data-ajax="false">
+                            <a href="FrontController?command=listMaterials" data-transition="fade" data-theme="c" data-icon="" data-ajax="false">
                                 List Materials
                             </a>
                         </li>
@@ -57,7 +57,7 @@
                 </div>
             </div>
             <div data-theme="a" data-role="footer" data-position="fixed">
-                <a href="FrontController?command=login" class="ui-btn-right" data-transition="fade" data-theme="" data-icon="" data-ajax="false">
+                <a href="FrontController?command=login" class="ui-btn-right" data-transition="fade" data-theme="c" data-icon="" data-ajax="false">
                     Log out
                 </a>
             </div>
