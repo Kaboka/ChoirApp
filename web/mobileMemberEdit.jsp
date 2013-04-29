@@ -30,6 +30,7 @@
             try {
 
                 $(function() {
+                    
                     $("#submitButton").click(function() {
                         $("#errorReport").empty();
                         var validated = true;

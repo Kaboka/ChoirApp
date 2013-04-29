@@ -54,11 +54,12 @@
         });
         
         function materialsByVoicesList(data){
-            $(".materialList").html("<li data-role='list-divider' role='heading'>"+
+            $(".materialList").empty();
+            $(".materialList").html("<li data-role='list-divider' role='heading' id='heading'>"+
                     "Materials"+
                     "</li>");
             for(var i = 0; i < data.length; i++){
-                $(".materialList").append("<li data-theme='c' data-record="+data[i].id+">"+
+                $("#heading").append("<li data-theme='c' data-record="+data[i].id+">"+
                     "<a href='#details' data-transition='slide'>"+
                     data[i].title+
                     "</a>"+
@@ -101,7 +102,7 @@
             
             
                 <ul class="materialList" data-role="listview" data-divider-theme="b" data-inset="true" data-filter="true">
-                    <li data-role="list-divider" role="heading">
+                    <li data-role="list-divider" role="heading" id="heading">
                         Materials
                     </li>
                     <c:forEach var="material" items="${materials}">
