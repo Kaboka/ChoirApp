@@ -28,7 +28,7 @@
         
         $("li").click(function(){
             var id = $(this).data("record");
-            $.ajax({ url : "MaterialServlet?id="+id+"&command=ajaxViewMaterial",
+            $.ajax({ url : "AjaxServlet?id="+id+"&command=ajaxViewMaterial",
                     cache : false,
                     dataType : "json",
                     success : materialReady});
@@ -43,11 +43,29 @@
                     "Pages: " + data.pageCount + "<br/>" +
                     "<a data-role='button' href='FrontController?command=editMaterial&id=" + data.id + "'>Edit</a>" + "</p>");
         }
+
         
         $("#selectmenu1").change(function(){
             var id = $(this).find(":selected").data("record");
-//            $.ajax({url : "MaterialServlet?")
+            $.ajax({url : "AjaxServlet?voiceCode="+id+"&command=ajaxListMaterialsByVoices",
+                    cache : false,
+                    dataType : "json",
+                    success : materialsByVoicesList});
         });
+        
+        function materialsByVoicesList(data){
+            $(".materialList").empty();
+            $(".materialList").html("<li data-role='list-divider' role='heading' id='heading'>"+
+                    "Materials"+
+                    "</li>");
+            for(var i = 0; i < data.length; i++){
+                $("#heading").append("<li data-theme='c' data-record="+data[i].id+">"+
+                    "<a href='#details' data-transition='slide'>"+
+                    data[i].title+
+                    "</a>"+
+                    "</li>");
+            }
+        }
         
     });
 
@@ -61,7 +79,7 @@
         
         <!-- HOME -->
         <div data-role="page" id="page1">
-            <div data-theme="a" data-role="header" data-position="fixed">
+            <div data-theme="a" data-role="header">
                 <h3 class="header">
                     Materials
                 </h3>
@@ -84,7 +102,7 @@
             
             
                 <ul class="materialList" data-role="listview" data-divider-theme="b" data-inset="true" data-filter="true">
-                    <li data-role="list-divider" role="heading">
+                    <li data-role="list-divider" role="heading" id="heading">
                         Materials
                     </li>
                     <c:forEach var="material" items="${materials}">
@@ -108,7 +126,7 @@
         <!-- PAGE FOR MATERIAL DETAILS -->
         <div data-role="page" id="details">
             <div data-theme="a" data-role="header">
-                <a data-role="button" data-direction="reverse" data-transition="slide" href="#page1" data-icon="arrow-l" data-iconpos="left" class="ui-btn-left" data-ajax="false">
+                <a data-role="button" data-direction="reverse" data-transition="slide" href="#page1" data-icon="arrow-l" data-iconpos="left" class="ui-btn-left">
                     Materials
                 </a>
                 <h3 class="header">
@@ -119,7 +137,7 @@
                 
             </div>
             <div data-theme="a" data-role="footer" data-position="fixed">
-                <a data-role="button" data-direction="reverse" data-transition="slide" href="#page1" data-icon="home" data-iconpos="left" class="ui-btn-left" data-ajax="false">
+                <a data-role="button" data-direction="reverse" data-transition="slide" href="#page1" data-icon="home" data-iconpos="left" class="ui-btn-left">
                 </a>
             </div>
         </div>

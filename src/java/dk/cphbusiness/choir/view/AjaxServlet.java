@@ -1,3 +1,7 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package dk.cphbusiness.choir.view;
 
 import dk.cphbusiness.choir.commands.AjaxCommand;
@@ -16,9 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author PC
  */
-@WebServlet(name = "MaterialServlet", urlPatterns = {"/MaterialServlet"})
-public class MaterialServlet extends HttpServlet {
-    
+@WebServlet(name = "AjaxServlet", urlPatterns = {"/AjaxServlet"})
+public class AjaxServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,12 +32,11 @@ public class MaterialServlet extends HttpServlet {
         try{
             out.println(command.execute(req, ""));
         } catch (CommandException ex) {
-            Logger.getLogger(MaterialServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AjaxServlet.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
             out.close();
         }
         
         
     }
-    
 }
